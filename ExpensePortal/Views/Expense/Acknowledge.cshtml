@@ -1,0 +1,22 @@
+﻿@model ExpensePortal.Models.ExpenditureViewModel
+@{
+    ViewBag.Title = "Acknowledge";
+
+    string firstName = Model.FirstName;
+    string lastName = Model.LastName;
+    string weekEndingDate = Model.WeekEndingDate;
+
+    var payrollNumber = Model.PayrollNumber;
+    var year = Model.Year;
+    var week = Model.Week;
+    var product = Model.Product;
+
+    var routeValues = Model.GetRouteValues(payrollNumber, year, week, product);
+}
+<div class="row">
+    <h1>Record of Expenditure - @product - @firstName @lastName</h1>
+    <p>Thank you, your Record of Expenditure for week ending: <strong>@weekEndingDate</strong> has been received. </p>
+
+    <p>@Html.ActionLink("Records of Expenditure", "Expenditure", "Expense", routeValues, null)</p>
+</div>
+

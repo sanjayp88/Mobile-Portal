@@ -1,0 +1,137 @@
+﻿@model ExpensePortal.Models.DocumentViewModel
+
+@{
+    ViewBag.Title = "Documents";
+}
+<div class="row">
+    @*<h1>@Html.DisplayFor(m => m.CategoryType)</h1>*@
+    <h1>Payslips</h1>
+    <div style="display:none;">
+        @using (Html.BeginForm("Documents", "Document", FormMethod.Post))
+        {
+
+        }
+    </div>
+
+    @{
+        var GetDocumentDescriptons = Model.GetDocumentDescripton;
+        int rowID = 0;
+        if (GetDocumentDescriptons.Count <= 0)
+        {
+
+            <div id="divDocument" class="row">
+                <div class="sixcol">
+
+                    <div class="field">
+
+                        <div style="padding: 10px;  text-align: center;"> No Payslip Available</div>
+                    </div>
+
+                </div>
+
+            </div>
+
+        }
+        else
+        {
+
+            if (GetDocumentDescriptons.Any())
+            {
+
+
+                <div id="divDocument" class="row">
+                    <div class="sixcol">
+
+                        <div class="field">
+
+                            <table id="tblDocument" class="tableBorderSet" align="center"  style="border: 1px solid #9b26b6;  text-align: center;">
+                                <thead>
+                                    <tr>
+                                        <th class="thcss">No</th>
+                                        <th class="thcss">Year</th>
+                                        <th class="thcss">Week</th>
+                                        <th class="thcss">Week Ending</th>
+                                        <th class="thcss"> </th>
+
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    @foreach (var GetDocumentDescripton in GetDocumentDescriptons)
+                                    {
+                                        var Name = GetDocumentDescripton.FileName;
+                                        //var Year = GetDocumentDescripton.UpdatedUtc.Year;
+                                        var ProcessDate = Name.Split('_');
+                                        var ProcessDateNew = Convert.ToDateTime(ProcessDate[7] + "/" + ProcessDate[6] + "/" + ProcessDate[5]);
+                                        var YearLastTwoDigit = ProcessDate[5].Substring(2,2);
+                                        var WeekOfYear = Model.GetWeekOfYear(ProcessDateNew);
+                                        var DayOfWeek = GetDocumentDescripton.UpdatedUtc.DayOfWeek;
+                                       // var Year2 = GetDocumentDescripton.UpdatedUtc.Year.ToString().Substring(2, 2);
+                                        //var Month = GetDocumentDescripton.UpdatedUtc.Month;
+                                        var YearNew = "Year";
+                                        if (Convert.ToInt32(ProcessDate[6])<04)
+                                        {
+                                                YearNew = (Convert.ToInt32(ProcessDate[5]) - 1).ToString() + '-' + YearLastTwoDigit;
+                                        }
+                                        else
+                                        {
+                                            YearNew = ProcessDate[5].ToString() + '-' + (Convert.ToInt32(YearLastTwoDigit) + 1).ToString();
+                                        }
+                                        <tr>
+                                            <td class="tdcss">@(rowID + 1)</td>
+                                            @*<td class="tdcss">@(Year -1)-@Year2</td>*@
+                                            @*<td class="tdcss">@(Month < 4) ?@(Year -1)-@Year2:@Year-@(Convert.ToInt32(Year2)+1) </td>*@
+                                            <td class="tdcss">@YearNew</td>
+                                            <td class="tdcss">@WeekOfYear </td>
+                                            <td class="tdcss">@DayOfWeek</td>
+                                            <td class="tdcss">@Html.ActionLink("View " + Model.CategoryType, "DocumentView", new {Name = @Name }, new { target = "_blank" })     </td>
+                             
+                                        </tr>
+                                        rowID = rowID + 1;
+                                    }
+                                </tbody>
+                            </table>
+
+
+                        </div>
+
+                    </div>
+
+                </div>
+
+
+            }
+        }
+    }
+</div>
+
+@section scripts
+{
+    @*<script src="~/Scripts/DownloadPayslip.js"></script>*@
+
+    <script>
+
+        $(document).ready(function () {
+
+            $('.DActive').removeClass('Active');
+            $('#Payslip').addClass('Active');
+            $('#Payslip2').addClass('Active');
+            
+        });
+
+    </script>
+    <style>
+        .thcss {
+            padding: 10px;
+            background-color: #9b26b6;
+            color: white;
+            border: 1px solid #9b26b6;
+            text-align: center;
+        }
+
+        .tdcss {
+            padding: 10px;
+            border: 1px solid #9b26b6;
+            text-align: center;
+        }
+    </style>
+}

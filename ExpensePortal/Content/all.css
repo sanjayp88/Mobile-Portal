@@ -1,0 +1,1016 @@
+/*
+  CSS by Jamie Read
+  Source Shaper
+*/
+/* line 7 */
+html, body, div, span, object, iframe, h1, h2, h3, h4, h5, h6, p, blockquote, pre, a, abbr, address, cite, code, del, dfn, em, img, ins, q, small, strong, sub, sup, dl, dt, dd, ol, ul, li, fieldset, form, label, legend, table, caption, tbody, tfoot, thead, tr, th, td {
+  border: 0;
+  margin: 0;
+  padding: 0;
+}
+
+/* line 7 */
+article, aside, figure, figure img, figcaption, hgroup, footer, header, nav, section, video, object {
+  display: block;
+}
+
+/* line 7 */
+a img {
+  border: 0;
+}
+
+/* line 7 */
+figure {
+  position: relative;
+}
+
+/* line 7 */
+figure img {
+  width: 100%
+}
+
+@font-face {
+  font-family: 'cronos_mmregular';
+  /*src: url("/fonts/cronos_mm-webfont.eot");
+  src: url("/fonts/cronos_mm-webfont.eot?#iefix") format("embedded-opentype"), url("/fonts/cronos_mm-webfont.woff") format("woff"), url("/fonts/cronos_mm-webfont.ttf") format("truetype"), url("/fonts/cronos_mm-webfont.svg#cronos_mmregular") format("svg");*/
+  font-weight: normal;
+  font-style: normal;
+}
+
+/* line 66 */
+body {
+  margin: 0;
+  padding: 0;
+  font-size: 1em;
+  font-family: 'Arial';
+  font-weight: normal;
+  overflow-y: scroll;
+  /*background: #63666a;*/
+}
+/* line 74 */
+body .clear {
+  clear: both;
+}
+/* line 77 */
+body .fl {
+  float: left;
+  width: 49%;
+}
+/* line 81 */
+body .fr {
+  float: right;
+  width: 49%;
+}
+/* line 86 */
+body div.content {
+  min-height: 700px;
+  background: #f8f8f8;
+}
+/* line 90 */
+body div.content div.input-group h2 {
+  color: #333;
+  font-size: 20px;
+}
+/* line 94 */
+body div.content a {
+  color: #9b26b6;
+  font-size: 15px;
+}
+/* line 98 */
+body div.content p, body div.content pre {
+  font-size: 15px;
+  color: #555;
+  margin-bottom: 15px;
+  word-break: break-word;
+}
+/* line 104 */
+body div.content pre {
+  background: #f4efe9;
+  padding: 15px;
+  border: 1px solid #d9ccbd;
+}
+/* line 109 */
+body div.content h1, body div.content h2, body div.content h3, body div.content h4, body div.content h5, body div.content h6 {
+  font-family: 'cronos_mmregular';
+}
+/* line 112 */
+body div.content h1 {
+  color: #9b26b6;
+  font-size: 35px;
+  font-weight: bold;
+  padding-bottom: 5px;
+  margin: 10px 0 20px 0;
+  border-bottom: 1px solid #63666a;
+}
+/* line 120 */
+body div.content h2 {
+  display: block;
+  color: #9b26b6;
+  font-size: 23px;
+  margin-bottom: 10px;
+  font-weight: lighter;
+}
+/* line 127 */
+body div.content h3 {
+  color: #9b26b6;
+  font-size: 15px;
+  font-weight: lighter;
+  margin-bottom: 5px;
+}
+/* line 133 */
+body div.content h4 {
+  font-size: 24px;
+  margin: 40px 0 5px 0;
+}
+/* line 137 */
+body div.content h5 {
+  font-size: 18px;
+  margin: 10px 0 0 0;
+}
+/* line 141 */
+body div.content ul {
+  margin: 0 0 30px 0;
+  padding: 0;
+  list-style: none;
+}
+/* line 145 */
+body div.content ul li {
+  font-size: 14px;
+  color: #333;
+  margin: 5px 0;
+  padding: 0;
+}
+/* line 152 */
+body div.content ul.errors {
+  margin: 10px 0;
+}
+/* line 155 */
+body div.content ul.errors li {
+  font-size: 14px;
+  color: #e73413;
+  font-weight: bold;
+}
+/* line 161 */
+body div.content ul.flashes {
+  list-style: none;
+  margin-bottom: 10px;
+}
+/* line 164 */
+body div.content ul.flashes li {
+  padding: 0;
+  color: #34a211;
+  font-weight: bold;
+  font-size: 17px;
+}
+/* line 173 */
+body dl {
+  border: 3px double #d9ccbd;
+  background: #f4efe9;
+  padding: 15px;
+}
+/* line 178 */
+body dl.errorcodes dt {
+  width: auto;
+}
+/* line 183 */
+body dt {
+  float: left;
+  clear: left;
+  width: 100px;
+  text-align: right;
+  font-weight: bold;
+  color: green;
+}
+/* line 191 */
+body dt:after {
+  content: ":";
+}
+/* line 194 */
+body dd {
+  margin: 0 0 0 110px;
+  padding: 0 0 0.5em 0;
+}
+
+/* line 2, D:/Work/Py/epr-portal/project/src/public/static/css/1140-grid.scss */
+.container {
+  padding-top: 20px;
+  padding-bottom: 20px;
+}
+
+/* line 7, D:/Work/Py/epr-portal/project/src/public/static/css/1140-grid.scss */
+.row {
+  width: 100%;
+  /*max-width: 1200px;*/
+  /*min-width: 320px;*/
+  margin: 0 auto;
+  overflow: hidden;
+}
+
+/* line 15, D:/Work/Py/epr-portal/project/src/public/static/css/1140-grid.scss */
+.onecol, .twocol, .threecol, .fourcol, .fivecol, .sixcol, .sevencol, .eightcol, .ninecol, .tencol, .elevencol {
+  margin-right: 20px;
+  float: left;
+  min-height: 1px;
+}
+
+/* line 21, D:/Work/Py/epr-portal/project/src/public/static/css/1140-grid.scss */
+.row .onecol {
+  width: 4.85%;
+}
+
+/* line 25, D:/Work/Py/epr-portal/project/src/public/static/css/1140-grid.scss */
+.row .twocol {
+  width: 13.45%;
+}
+
+/* line 29, D:/Work/Py/epr-portal/project/src/public/static/css/1140-grid.scss */
+.row .threecol {
+  width: 22.05%;
+}
+
+/* line 33, D:/Work/Py/epr-portal/project/src/public/static/css/1140-grid.scss */
+.row .fourcol {
+  width: 30.75%;
+}
+
+/* line 37, D:/Work/Py/epr-portal/project/src/public/static/css/1140-grid.scss */
+.row .fivecol {
+  width: 39.45%;
+}
+
+/* line 41, D:/Work/Py/epr-portal/project/src/public/static/css/1140-grid.scss */
+.row .sixcol {
+  width: 48%;
+}
+
+/* line 45, D:/Work/Py/epr-portal/project/src/public/static/css/1140-grid.scss */
+.row .sevencol {
+  width: 56.75%;
+}
+
+/* line 49, D:/Work/Py/epr-portal/project/src/public/static/css/1140-grid.scss */
+.row .eightcol {
+  width: 65.4%;
+}
+
+/* line 53, D:/Work/Py/epr-portal/project/src/public/static/css/1140-grid.scss */
+.row .ninecol {
+  width: 74.05%;
+}
+
+/* line 57, D:/Work/Py/epr-portal/project/src/public/static/css/1140-grid.scss */
+.row .tencol {
+  width: 82.7%;
+}
+
+/* line 61, D:/Work/Py/epr-portal/project/src/public/static/css/1140-grid.scss */
+.row .elevencol {
+  width: 91.35%;
+}
+
+/* line 65, D:/Work/Py/epr-portal/project/src/public/static/css/1140-grid.scss */
+.row .twelvecol {
+  width: 100%;
+  float: left;
+}
+
+/* line 70, D:/Work/Py/epr-portal/project/src/public/static/css/1140-grid.scss */
+.last {
+  margin-right: 0px;
+}
+
+/* line 74, D:/Work/Py/epr-portal/project/src/public/static/css/1140-grid.scss */
+img, object, embed {
+  max-width: 100%;
+}
+
+/* line 78, D:/Work/Py/epr-portal/project/src/public/static/css/1140-grid.scss */
+img {
+  height: auto;
+}
+
+/* line 83, D:/Work/Py/epr-portal/project/src/public/static/css/1140-grid.scss */
+body div.content .row .onecol.last, body div.content .row .twocol.last, body div.content .row .threecol.last, body div.content .row .fourcol.last, body div.content .row .fivecol.last, body div.content .row .sixcol.last, body div.content .row .sevencol.last, body div.content .row .eightcol.last, body div.content .row .ninecol.last, body div.content .row .tencol.last, body div.content .row .elevencol.last, body div.content .row .twelvecol.last {
+  margin-right: 0;
+}
+
+@media only screen and (max-width: 1200px) {
+  /* line 89, D:/Work/Py/epr-portal/project/src/public/static/css/1140-grid.scss */
+ 
+  .row, body, .container {
+    width: 100%;
+    margin-left: 0px;
+    margin-right: 0px;
+    padding-left: 0px;
+    padding-right: 0px;
+  }
+
+  /* line 97, D:/Work/Py/epr-portal/project/src/public/static/css/1140-grid.scss */
+  .row .onecol, .row .twocol, .row .threecol, .row .fourcol, .row .fivecol, .row .sixcol, .row .sevencol, .row .eightcol, .row .ninecol, .row .tencol, .row .elevencol, .row .twelvecol {
+    width: auto;
+    float: none;
+    margin-left: 0px;
+    margin-right: 0px;
+    padding-left: 20px;
+    padding-right: 20px;
+  }
+
+  /* line 105, D:/Work/Py/epr-portal/project/src/public/static/css/1140-grid.scss */
+  .row nav.tencol {
+    padding: 0;
+  }
+}
+/* line 1, D:/Work/Py/epr-portal/project/src/public/static/css/expenditure.scss */
+div.expenditure {
+  margin-top: 20px;
+  display: none;
+}
+/* line 5, D:/Work/Py/epr-portal/project/src/public/static/css/expenditure.scss */
+div.expenditure.selected {
+  display: block;
+}
+/* line 8, D:/Work/Py/epr-portal/project/src/public/static/css/expenditure.scss */
+div.expenditure div.car, div.expenditure div.public_transport {
+  display: none;
+}
+/* line 11, D:/Work/Py/epr-portal/project/src/public/static/css/expenditure.scss */
+div.expenditure label {
+  margin: 5px 0;
+  display: inline-block;
+}
+/* line 15, D:/Work/Py/epr-portal/project/src/public/static/css/expenditure.scss */
+div.expenditure input, div.expenditure textarea {
+  font-size: 15px;
+  padding: 8px 10px;
+  margin-bottom: 15px;
+}
+/* line 23, D:/Work/Py/epr-portal/project/src/public/static/css/expenditure.scss */
+div.expenditure div.field {
+  margin: 0 0 15px 0;
+}
+/* line 26, D:/Work/Py/epr-portal/project/src/public/static/css/expenditure.scss */
+div.expenditure div.field.time {
+  float: left;
+  margin-right: 30px;
+  width: 120px;
+}
+/* line 30, D:/Work/Py/epr-portal/project/src/public/static/css/expenditure.scss */
+div.expenditure div.field.time input {
+  width: 100%;
+}
+/* line 34, D:/Work/Py/epr-portal/project/src/public/static/css/expenditure.scss */
+div.expenditure div.field.postcode {
+  float: left;
+  margin-right: 30px;
+  width: 208px;
+}
+/* line 38, D:/Work/Py/epr-portal/project/src/public/static/css/expenditure.scss */
+div.expenditure div.field.postcode input {
+  width: 100%;
+}
+
+/* line 45, D:/Work/Py/epr-portal/project/src/public/static/css/expenditure.scss */
+div.week {
+  border: 1px solid #d9ccbd;
+  margin: 10px 0 30px 0;
+  background: #d9ccbd;
+  width:100%;
+}
+/* line 49, D:/Work/Py/epr-portal/project/src/public/static/css/expenditure.scss */
+div.week div.day {
+  float: left;
+  /*width: 14.28571428571429%;*/
+
+ 
+    margin: 7px 2px 8px 8px;
+ 
+    width: 24%;
+}
+/* line 53, D:/Work/Py/epr-portal/project/src/public/static/css/expenditure.scss */
+div.week div.day label {
+  display: inline-block;
+  margin-bottom: 5px;
+  width: 90px;
+}
+/* line 58, D:/Work/Py/epr-portal/project/src/public/static/css/expenditure.scss */
+div.week div.day div.inner {
+  padding: 10px;
+  /*border-right: 1px solid #d9ccbd;*/
+  border: 1px solid #d9ccbd;
+  overflow: hidden;
+  background: #fcf6f0;
+}
+/* line 63, D:/Work/Py/epr-portal/project/src/public/static/css/expenditure.scss */
+div.week div.day div.inner h2 {
+  background: #389b5d;
+  color: #fff;
+  margin: -10px -10px 10px -10px;
+  padding: 10px;
+  cursor: pointer;
+}
+/* line 71, D:/Work/Py/epr-portal/project/src/public/static/css/expenditure.scss */
+div.week div.day div.inner.last {
+  border: none;
+}
+/* line 75, D:/Work/Py/epr-portal/project/src/public/static/css/expenditure.scss */
+div.week div.day.selected div.inner {
+  background: #fcffa9;
+}
+/* line 77, D:/Work/Py/epr-portal/project/src/public/static/css/expenditure.scss */
+div.week div.day.selected div.inner h2 {
+  background: #47b5c5;
+}
+
+/* line 86, D:/Work/Py/epr-portal/project/src/public/static/css/expenditure.scss */
+div.confirm p.error {
+  color: #f00;
+}
+/* line 90, D:/Work/Py/epr-portal/project/src/public/static/css/expenditure.scss */
+div.confirm form {
+  border: none;
+  background: none;
+}
+
+/* line 1, D:/Work/Py/epr-portal/project/src/public/static/css/header.scss */
+header {
+  background: #fff;
+  padding: 15px 0;
+  position: relative;
+  width: 100%;
+  z-index: 100;
+  /*min-width: 320px;*/
+  /*-webkit-box-shadow: 0 0 10px rgba(0, 0, 0, 0.4);*/
+  /*-moz-box-shadow: 0 0 10px rgba(0, 0, 0, 0.4);*/
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.4);
+}
+/* line 9, D:/Work/Py/epr-portal/project/src/public/static/css/header.scss */
+header a.logo {
+  width: 169px;
+  height: 125px;
+  /*margin: 0;*/
+   margin: 2px 34px 0;
+  text-indent: -999px;
+  float: left;
+  background: url("/Content/Images/sprite-main.png") no-repeat;
+  margin-top: 1px;
+}
+/* line 18, D:/Work/Py/epr-portal/project/src/public/static/css/header.scss */
+header nav {
+  float: left;
+  width: 76%;
+  margin: 7px 0 0 40px;
+}
+/* line 23, D:/Work/Py/epr-portal/project/src/public/static/css/header.scss */
+header nav ul {
+  margin: 0;
+  padding: 0;
+  float: left;
+}
+/* line 27, D:/Work/Py/epr-portal/project/src/public/static/css/header.scss */
+header nav ul li {
+  display: inline-block;
+  margin-right: 10px;
+  color: #fff;
+}
+/* line 31, D:/Work/Py/epr-portal/project/src/public/static/css/header.scss */
+header nav ul li a {
+  display: inline-block;
+  color: #fff;
+  font-size: 13px;
+  font-weight: bold;
+  padding: 7px 6px;
+  margin: 5px 7px 0 0;
+  text-transform: uppercase;
+  text-decoration: none;
+}
+/* line 44, D:/Work/Py/epr-portal/project/src/public/static/css/header.scss */
+header p.phone {
+  /*margin: 26px 0 0 50px;*/
+  
+ margin: 26px 34px 0 50px;
+  float: right;
+  font-size: 20px;
+  color: #534538;
+  font-weight: 800;
+  border-bottom: 2px solid #9b26b6;
+}
+/* line 52, D:/Work/Py/epr-portal/project/src/public/static/css/header.scss */
+header div.user {
+  float: right;
+  margin-top: 15px;
+      margin-right: 34px;
+
+}
+/* line 55, D:/Work/Py/epr-portal/project/src/public/static/css/header.scss */
+header div.user p {
+  font-size: 20px;
+  color: #534538;
+}
+/* line 59, D:/Work/Py/epr-portal/project/src/public/static/css/header.scss */
+header div.user a {
+  color: #9b26b6;
+  font-size: 17px;
+}
+
+/* line 1, D:/Work/Py/epr-portal/project/src/public/static/css/footer.scss */
+footer {
+  background: #63666a;
+  padding: 15px 0;
+  font-size: 0.9em;
+  position: relative;
+      text-align: center;
+}
+/* line 6, D:/Work/Py/epr-portal/project/src/public/static/css/footer.scss */
+footer p, footer a {
+  color: #fff;
+  font-weight: bold;
+}
+
+/* line 1, D:/Work/Py/epr-portal/project/src/public/static/css/form.scss */
+form, div.input-group {
+  background: #d3ccda;
+  border-radius: 2px;
+  padding: 8px 15px;
+  border: 1px solid #9476ac;
+  margin-bottom: 10px;
+}
+
+/* line 8, D:/Work/Py/epr-portal/project/src/public/static/css/form.scss */
+div.input-group {
+  margin-bottom: 20px;
+  padding: 10px 15px;
+}
+/* line 12, D:/Work/Py/epr-portal/project/src/public/static/css/form.scss */
+div.input-group div.field, div.input-group input {
+  margin: 0;
+}
+
+/* line 16, D:/Work/Py/epr-portal/project/src/public/static/css/form.scss */
+div.field {
+  margin: 10px 0;
+}
+
+/* line 19, D:/Work/Py/epr-portal/project/src/public/static/css/form.scss */
+input, textarea {
+  box-sizing: border-box;
+  -webkit-box-sizing: border-box;
+  -moz-box-sizing: border-box;
+  border: 1px solid #9476ac;
+  -webkit-border-radius: 2px;
+  -moz-border-radius: 2px;
+  border-radius: 2px;
+}
+
+/* line 27, D:/Work/Py/epr-portal/project/src/public/static/css/form.scss */
+input[type=text], input[type=password], textarea {
+  width: 100%;
+  display: block;
+  padding: 5px 8px;
+  font-size: 15px;
+}
+
+/* line 33, D:/Work/Py/epr-portal/project/src/public/static/css/form.scss */
+input[type=submit] {
+  background: #9b26b6;
+  padding: 5px 10px;
+  font-size: 18px;
+  color: #fff;
+  border: 1px solid #ccc;
+  cursor: pointer;
+  margin: 5px 0;
+  -webkit-border-radius: 2px;
+  -moz-border-radius: 2px;
+  border-radius: 2px;
+}
+/* line 43, D:/Work/Py/epr-portal/project/src/public/static/css/form.scss */
+input[type=submit]:hover {
+  opacity: 0.8;
+}
+
+/* line 47, D:/Work/Py/epr-portal/project/src/public/static/css/form.scss */
+textarea {
+  resize: vertical;
+}
+
+
+.tdClass {
+
+      border: 1px solid #9476ac;
+border-collapse: collapse;
+padding: 9px 31px 8px 16px;
+width:100%;
+
+}
+#divDocument {
+
+background: none repeat scroll 0% 0% #d3ccda;
+border-radius: 2px;
+border: 1px solid #9476ac;
+padding: 9px 0 0;
+width: 90%;
+margin-left: 1px;
+}
+
+
+
+.tablebox {
+background: none repeat scroll 0% 0% #d3ccda;
+border: 1px solid #9476ac;
+/*margin-left: 192px;
+padding: 5px 18px 1px 40px;*/
+padding: 5px 18px 1px 9px;
+width:70%;
+
+}
+.tableBorderSet {
+margin-left: 20px;
+}
+.tableBorderSet th, td {
+/*border: 1px solid #000;
+border-collapse: collapse;
+padding: 7px 52px 7px 27px;
+margin-left: 20px;*/
+    }
+.txtAlign {
+width:22%;
+ padding-top: 25px;
+}
+.ddlMargin{
+
+    margin-left:9%;
+
+}
+
+
+.divMenu {
+    float:left;
+    width:15%;
+ padding-left: 33px;
+    display: block;
+/*padding: 5px 0;*/
+font-family: arial,helvetica,sans-serif;
+color: #555;
+line-height: 16px;
+text-decoration: none;
+background: #F5F5F5;
+font-size: 14px;
+ 
+}
+.divContent {
+      width:73%;
+      float:left;
+      padding-left: 33px;
+}
+.divUlLi {
+    margin-left: 15px;
+       border-left: 1px solid #D7D8DA;
+font-size: 14px;
+}
+.divUlLi a {
+    padding-left: 18px !important;
+}
+
+.divUlLi li {
+    margin: 1px 1px 1px 1px !important;
+    height: 25px;
+}
+
+.h3css {
+    float: left;
+height: 35px;
+padding: 0 10px;
+font-family: 'cronos pro bold',arial,helvetica,sans-serif!important;
+font-size: 22px!important;
+color: #FFF !important;
+line-height: 38px;
+text-transform: uppercase;
+background: #9b26b6;
+font-weight:800;
+width:65%;
+}
+.Active {
+    color: #FFF !important;
+    background: #9b26b6;
+    padding: 1px 37px 6px 0px;
+    display:block;
+}
+    /*.Active a {
+         color: #FFF !important;
+    }*/
+.divMenu a:hover {
+color: #FFF !important;
+    background: #9b26b6;
+padding: 1px 37px 6px 0px;
+display:block;
+}
+.ProductCSS {
+ 
+padding: 0px 10px 11px 13px;
+height: 25px;
+width:94%;
+
+
+}
+    .ProductCSS a {
+        padding-left: 10px !important;
+    }
+
+/*#divDocument table, th, td {
+
+      border: 1px solid #9b26b6;
+      text-align: center;
+    
+}*/
+
+/*#divDocument th {
+    background-color: #9b26b6;
+    color: white;
+}*/
+
+/*#divDocument th, td {
+ padding: 10px;
+}*/
+#divDocument .sixcol {
+/*width:93% !important;*/
+width: 96% !important;
+}
+#tblDocument {
+width:100%;
+}
+/*Responsive css*/
+
+.left-menu {
+display:none;
+}
+/*Style 'show menu' label button and hide it by default*/
+.show-menu {
+	font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
+	text-decoration: none;
+	color: #fff;
+	background: #9b26b6;
+	/*text-align: center;*/
+	/*padding: 10px 0;*/
+    padding: 5px 5px;
+	display: none;
+}
+
+/*Hide checkbox*/
+/*input[type=checkbox]{
+    display: none;
+    -webkit-appearance: none;
+}*/
+
+/*Show menu when invisible checkbox is checked*/
+input[type=checkbox]:checked ~ #menu{
+    display: block;
+}
+.HideMenu {
+display:none !important;
+}
+@media screen and (max-width : 1420px) {
+    div.week div.day {
+       
+        width: 32%;
+    }
+}
+@media screen and (max-width : 1070px) {
+    div.week div.day {
+       
+        width: 48%;
+    }
+
+
+    footer {
+       
+        bottom: 0;
+       
+        position: fixed;
+    
+        width: 100%;
+        padding: 0;
+        font-size: 90%;
+    }
+}
+@media screen and (max-width : 1201px) {
+   #tblDocument {
+    width: 99%;
+}
+.tableBorderSet {
+    margin-left: 0px;
+}
+}
+@media screen and (max-width : 760px) {
+    /*Make dropdown links appear inline*/
+    ul {
+        position: static;
+        display: none;
+    }
+    /*Create vertical spacing*/
+    li {
+         margin-bottom: 1px;
+    margin-top: 1px;
+    }
+        /*Make all menu links full width*/
+        ul li, li a {
+            width: 100%;
+        }
+    /*Display 'show menu' link*/
+    .show-menu {
+        display: block;
+    }
+    /*.left-menu{ width:100%; float:left;*/  /*background:#966;*}/
+/*.page-content{float:left; width:100%;  margin-left:0px;
+    margin-top: 5px; }
+.tableBorderSet {
+    width: 97%;
+}
+.main-page{height:auto;}*/
+
+    .left-menu {
+display:block;
+}
+    .divMenu {
+    display:none;
+    }
+    li {
+		/*float: left;
+	margin-right: 1px; min-width:300px; width:19%;*/
+     
+         margin-bottom: 1px!important;
+    margin-top: 1px!important;
+   
+}
+    li a {
+	display:block;
+	min-width:140px;
+	height: 30px;
+	text-align: center;
+	line-height: 30px;
+	font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
+	color: #000!important;
+	/*background: #2f3036;*/
+	text-decoration: none;
+    background: #D29DDE;
+}
+
+/*Hover state for top level links*/
+li:hover a {
+	background: #9b26b6;
+    color:#fff !important;
+}
+    .imgcls {
+     height:20px !important;
+    }
+
+    #divDocument
+{
+width:97% !important;
+}
+
+        #divDocument .sixcol {
+           width: 101% !important;
+        }
+
+.divContent
+{
+width:98%;
+padding-left: 10px;
+}
+
+#divContent .sixcol
+{
+padding-left: 10px !important;
+padding-right:10px !important;
+}
+
+#tblDocument {
+    width: 93%;
+}
+.tableBorderSet
+{
+    margin-left:0px;
+}
+    .tablebox {
+    width:93%;
+    }
+   
+}
+@media screen and (max-width : 530px) {
+    div.week div.day {
+       
+        width:90%;
+    }
+}
+@media screen and (max-width : 500px) {
+    #divDocument {
+        width: 93% !important;
+    }
+
+    header p.phone {
+        text-align: center;
+        margin: 28px 0 2px 46px;
+        width: 100%;
+    }
+
+    header div.user {
+        text-align: center;
+        width: 100%;
+        margin-right: 0px;
+    }
+
+   header a.logo {
+    margin: 2px 153px 0;
+    width: 100%;
+}
+
+    .divContent {
+        width:96%;
+    }
+
+    #divDocument .sixcol {
+        width: 99% !important;
+    }
+
+    #tblDocument {
+        width: 90%;
+    }
+
+    .tablebox {
+        width: 90%;
+    }
+}
+@media screen and (max-width : 450px) {
+    #divDocument {
+    width: 99% !important;
+}
+    #divContent .sixcol {
+        width:105%!important
+    }
+    .tdcss {
+         padding:2px !important;
+    }
+      .thcss {
+         padding:2px!important;
+    }
+      #tblDocument {
+    width: 85%;
+}
+      
+header a.logo {
+    margin: 2px 95px 0;
+  
+}
+    .tdClass {
+     
+        padding: 5px 18px 1px 9px;
+    }
+    .tdClass {
+        padding: 5px 0 0;
+    }
+}
+
+
+
+@media screen and (max-width : 380px) {
+    footer {
+       
+        font-size: 78%;
+    }
+    
+.divContent {
+    width: 100%;
+}
+  #divDocument {
+    width: 92% !important;
+}
+}
+
+
+
+@media screen and (max-width : 330px) {
+    #divDocumentList .sixcol{
+
+         padding-left: 10px;
+    }
+    #divDocument .sixcol{
+
+        padding-left:13px !important;
+    }
+    .row, body, .container {
+    width:98%;
+    }
+    header {
+     width:102%;
+    }
+    .left-menu {
+          width:104%;
+    }
+    #divDocument{
+      width: 98% !important;}
+header a.logo {
+    margin: 2px 71px 0;
+}
+    input[type="submit"] {
+    font-size:15px;
+    }
+}

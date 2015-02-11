@@ -1,0 +1,248 @@
+<?xml version="1.0" encoding="utf-8"?>
+<wsdl:definitions xmlns:wsap="http://schemas.xmlsoap.org/ws/2004/08/addressing/policy" xmlns:wsa10="http://www.w3.org/2005/08/addressing" xmlns:tns="http://tempuri.org/" xmlns:msc="http://schemas.microsoft.com/ws/2005/12/wsdl/contract" xmlns:soapenc="http://schemas.xmlsoap.org/soap/encoding/" xmlns:wsx="http://schemas.xmlsoap.org/ws/2004/09/mex" xmlns:wsp="http://schemas.xmlsoap.org/ws/2004/09/policy" xmlns:wsam="http://www.w3.org/2007/05/addressing/metadata" xmlns:wsa="http://schemas.xmlsoap.org/ws/2004/08/addressing" xmlns:soap12="http://schemas.xmlsoap.org/wsdl/soap12/" xmlns:wsaw="http://www.w3.org/2006/05/addressing/wsdl" xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/" xmlns:wsu="http://docs.oasis-open.org/wss/2004/01/oasis-200401-wss-wssecurity-utility-1.0.xsd" xmlns:xsd="http://www.w3.org/2001/XMLSchema" name="PayrollOneService" targetNamespace="http://tempuri.org/" xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">
+  <wsdl:types>
+    <xsd:schema targetNamespace="http://tempuri.org/Imports">
+      <xsd:import schemaLocation="http://agukdev01:802/PayrollOneService.svc?xsd=xsd0" namespace="http://tempuri.org/" />
+      <xsd:import schemaLocation="http://agukdev01:802/PayrollOneService.svc?xsd=xsd1" namespace="http://schemas.microsoft.com/2003/10/Serialization/" />
+      <xsd:import schemaLocation="http://agukdev01:802/PayrollOneService.svc?xsd=xsd2" namespace="http://schemas.datacontract.org/2004/07/PayrollOneService.API" />
+    </xsd:schema>
+  </wsdl:types>
+  <wsdl:message name="IPayrollOneService_GetPayrolls_InputMessage">
+    <wsdl:part name="parameters" element="tns:GetPayrolls" />
+  </wsdl:message>
+  <wsdl:message name="IPayrollOneService_GetPayrolls_OutputMessage">
+    <wsdl:part name="parameters" element="tns:GetPayrollsResponse" />
+  </wsdl:message>
+  <wsdl:message name="IPayrollOneService_Validate_InputMessage">
+    <wsdl:part name="parameters" element="tns:Validate" />
+  </wsdl:message>
+  <wsdl:message name="IPayrollOneService_Validate_OutputMessage">
+    <wsdl:part name="parameters" element="tns:ValidateResponse" />
+  </wsdl:message>
+  <wsdl:message name="IPayrollOneService_Persist_InputMessage">
+    <wsdl:part name="parameters" element="tns:Persist" />
+  </wsdl:message>
+  <wsdl:message name="IPayrollOneService_Persist_OutputMessage">
+    <wsdl:part name="parameters" element="tns:PersistResponse" />
+  </wsdl:message>
+  <wsdl:message name="IPayrollOneService_GetAll_InputMessage">
+    <wsdl:part name="parameters" element="tns:GetAll" />
+  </wsdl:message>
+  <wsdl:message name="IPayrollOneService_GetAll_OutputMessage">
+    <wsdl:part name="parameters" element="tns:GetAllResponse" />
+  </wsdl:message>
+  <wsdl:message name="IPayrollOneService_GetAllForCompany_InputMessage">
+    <wsdl:part name="parameters" element="tns:GetAllForCompany" />
+  </wsdl:message>
+  <wsdl:message name="IPayrollOneService_GetAllForCompany_OutputMessage">
+    <wsdl:part name="parameters" element="tns:GetAllForCompanyResponse" />
+  </wsdl:message>
+  <wsdl:message name="IPayrollOneService_GetAllForCompanyPayroll_InputMessage">
+    <wsdl:part name="parameters" element="tns:GetAllForCompanyPayroll" />
+  </wsdl:message>
+  <wsdl:message name="IPayrollOneService_GetAllForCompanyPayroll_OutputMessage">
+    <wsdl:part name="parameters" element="tns:GetAllForCompanyPayrollResponse" />
+  </wsdl:message>
+  <wsdl:message name="IPayrollOneService_PlaceEmployeesOnHoldExcept_InputMessage">
+    <wsdl:part name="parameters" element="tns:PlaceEmployeesOnHoldExcept" />
+  </wsdl:message>
+  <wsdl:message name="IPayrollOneService_PlaceEmployeesOnHoldExcept_OutputMessage">
+    <wsdl:part name="parameters" element="tns:PlaceEmployeesOnHoldExceptResponse" />
+  </wsdl:message>
+  <wsdl:message name="IPayrollOneService_ProcessPayroll_InputMessage">
+    <wsdl:part name="parameters" element="tns:ProcessPayroll" />
+  </wsdl:message>
+  <wsdl:message name="IPayrollOneService_ProcessPayroll_OutputMessage">
+    <wsdl:part name="parameters" element="tns:ProcessPayrollResponse" />
+  </wsdl:message>
+  <wsdl:message name="IPayrollOneService_TestConnection_InputMessage">
+    <wsdl:part name="parameters" element="tns:TestConnection" />
+  </wsdl:message>
+  <wsdl:message name="IPayrollOneService_TestConnection_OutputMessage">
+    <wsdl:part name="parameters" element="tns:TestConnectionResponse" />
+  </wsdl:message>
+  <wsdl:message name="IPayrollOneService_GetCompanies_InputMessage">
+    <wsdl:part name="parameters" element="tns:GetCompanies" />
+  </wsdl:message>
+  <wsdl:message name="IPayrollOneService_GetCompanies_OutputMessage">
+    <wsdl:part name="parameters" element="tns:GetCompaniesResponse" />
+  </wsdl:message>
+  <wsdl:message name="IPayrollOneService_CreateCompany_InputMessage">
+    <wsdl:part name="parameters" element="tns:CreateCompany" />
+  </wsdl:message>
+  <wsdl:message name="IPayrollOneService_CreateCompany_OutputMessage">
+    <wsdl:part name="parameters" element="tns:CreateCompanyResponse" />
+  </wsdl:message>
+  <wsdl:message name="IPayrollOneService_ResetData_InputMessage">
+    <wsdl:part name="parameters" element="tns:ResetData" />
+  </wsdl:message>
+  <wsdl:message name="IPayrollOneService_ResetData_OutputMessage">
+    <wsdl:part name="parameters" element="tns:ResetDataResponse" />
+  </wsdl:message>
+  <wsdl:portType name="IPayrollOneService">
+    <wsdl:operation name="GetPayrolls">
+      <wsdl:input wsaw:Action="http://tempuri.org/IPayrollOneService/GetPayrolls" message="tns:IPayrollOneService_GetPayrolls_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IPayrollOneService/GetPayrollsResponse" message="tns:IPayrollOneService_GetPayrolls_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="Validate">
+      <wsdl:input wsaw:Action="http://tempuri.org/IPayrollOneService/Validate" message="tns:IPayrollOneService_Validate_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IPayrollOneService/ValidateResponse" message="tns:IPayrollOneService_Validate_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="Persist">
+      <wsdl:input wsaw:Action="http://tempuri.org/IPayrollOneService/Persist" message="tns:IPayrollOneService_Persist_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IPayrollOneService/PersistResponse" message="tns:IPayrollOneService_Persist_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="GetAll">
+      <wsdl:input wsaw:Action="http://tempuri.org/IPayrollOneService/GetAll" message="tns:IPayrollOneService_GetAll_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IPayrollOneService/GetAllResponse" message="tns:IPayrollOneService_GetAll_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="GetAllForCompany">
+      <wsdl:input wsaw:Action="http://tempuri.org/IPayrollOneService/GetAllForCompany" message="tns:IPayrollOneService_GetAllForCompany_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IPayrollOneService/GetAllForCompanyResponse" message="tns:IPayrollOneService_GetAllForCompany_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="GetAllForCompanyPayroll">
+      <wsdl:input wsaw:Action="http://tempuri.org/IPayrollOneService/GetAllForCompanyPayroll" message="tns:IPayrollOneService_GetAllForCompanyPayroll_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IPayrollOneService/GetAllForCompanyPayrollResponse" message="tns:IPayrollOneService_GetAllForCompanyPayroll_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="PlaceEmployeesOnHoldExcept">
+      <wsdl:input wsaw:Action="http://tempuri.org/IPayrollOneService/PlaceEmployeesOnHoldExcept" message="tns:IPayrollOneService_PlaceEmployeesOnHoldExcept_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IPayrollOneService/PlaceEmployeesOnHoldExceptResponse" message="tns:IPayrollOneService_PlaceEmployeesOnHoldExcept_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="ProcessPayroll">
+      <wsdl:input wsaw:Action="http://tempuri.org/IPayrollOneService/ProcessPayroll" message="tns:IPayrollOneService_ProcessPayroll_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IPayrollOneService/ProcessPayrollResponse" message="tns:IPayrollOneService_ProcessPayroll_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="TestConnection">
+      <wsdl:input wsaw:Action="http://tempuri.org/IPayrollOneService/TestConnection" message="tns:IPayrollOneService_TestConnection_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IPayrollOneService/TestConnectionResponse" message="tns:IPayrollOneService_TestConnection_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="GetCompanies">
+      <wsdl:input wsaw:Action="http://tempuri.org/IPayrollOneService/GetCompanies" message="tns:IPayrollOneService_GetCompanies_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IPayrollOneService/GetCompaniesResponse" message="tns:IPayrollOneService_GetCompanies_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="CreateCompany">
+      <wsdl:input wsaw:Action="http://tempuri.org/IPayrollOneService/CreateCompany" message="tns:IPayrollOneService_CreateCompany_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IPayrollOneService/CreateCompanyResponse" message="tns:IPayrollOneService_CreateCompany_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="ResetData">
+      <wsdl:input wsaw:Action="http://tempuri.org/IPayrollOneService/ResetData" message="tns:IPayrollOneService_ResetData_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IPayrollOneService/ResetDataResponse" message="tns:IPayrollOneService_ResetData_OutputMessage" />
+    </wsdl:operation>
+  </wsdl:portType>
+  <wsdl:binding name="BasicHttpBinding_IPayrollOneService" type="tns:IPayrollOneService">
+    <soap:binding transport="http://schemas.xmlsoap.org/soap/http" />
+    <wsdl:operation name="GetPayrolls">
+      <soap:operation soapAction="http://tempuri.org/IPayrollOneService/GetPayrolls" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="Validate">
+      <soap:operation soapAction="http://tempuri.org/IPayrollOneService/Validate" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="Persist">
+      <soap:operation soapAction="http://tempuri.org/IPayrollOneService/Persist" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetAll">
+      <soap:operation soapAction="http://tempuri.org/IPayrollOneService/GetAll" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetAllForCompany">
+      <soap:operation soapAction="http://tempuri.org/IPayrollOneService/GetAllForCompany" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetAllForCompanyPayroll">
+      <soap:operation soapAction="http://tempuri.org/IPayrollOneService/GetAllForCompanyPayroll" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="PlaceEmployeesOnHoldExcept">
+      <soap:operation soapAction="http://tempuri.org/IPayrollOneService/PlaceEmployeesOnHoldExcept" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="ProcessPayroll">
+      <soap:operation soapAction="http://tempuri.org/IPayrollOneService/ProcessPayroll" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="TestConnection">
+      <soap:operation soapAction="http://tempuri.org/IPayrollOneService/TestConnection" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetCompanies">
+      <soap:operation soapAction="http://tempuri.org/IPayrollOneService/GetCompanies" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="CreateCompany">
+      <soap:operation soapAction="http://tempuri.org/IPayrollOneService/CreateCompany" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="ResetData">
+      <soap:operation soapAction="http://tempuri.org/IPayrollOneService/ResetData" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+  </wsdl:binding>
+  <wsdl:service name="PayrollOneService">
+    <wsdl:port name="BasicHttpBinding_IPayrollOneService" binding="tns:BasicHttpBinding_IPayrollOneService">
+      <soap:address location="http://agukdev01:802/PayrollOneService.svc" />
+    </wsdl:port>
+  </wsdl:service>
+</wsdl:definitions>

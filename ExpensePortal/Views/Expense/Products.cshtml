@@ -1,0 +1,42 @@
+﻿@model ExpensePortal.Models.ExpenditureViewModel
+@{
+    ViewBag.Title = "Products";
+}
+<div class="row">
+    <h1 id="headerText">Expenses Portal</h1>
+
+    <div class="sixcol" id="DivDropdown">
+        @using (Html.BeginForm("Overview", "Expense", FormMethod.Get))
+        {
+            <div class="field">
+                @Html.LabelFor(m => m.ProductID)
+                @Html.DropDownListFor(m => m.ProductID, Model.ProductItems, new { @class = "travel0 ddlMargin", })
+                <input id="filter" type="submit" value="Expenditures" style="display:none">
+            </div>
+        }
+    </div>
+</div>
+
+<div id="divDocumentList" class="row">
+    <div class="sixcol" style="width:98% !important;">
+
+        <div class="field">
+            <div id="rData">
+
+            </div>
+
+        </div>
+
+    </div>
+</div>
+
+
+
+
+
+@section scripts
+{
+    <script src="~/Scripts/product.js"></script>
+}
+
+

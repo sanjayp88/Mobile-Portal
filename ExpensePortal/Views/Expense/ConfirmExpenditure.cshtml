@@ -1,0 +1,221 @@
+﻿@using System.Globalization
+@model ExpensePortal.Models.ExpenditureViewModel
+@{
+    ViewBag.Title = "Confirm Expenditure";
+}
+@{
+    var payrollNumber = Model.PayrollNumber;
+    var year = Model.Year;
+    var week = Model.Week;
+    var product = Model.Product;
+
+    var routeValues = Model.GetRouteValues(payrollNumber, year, week, product);
+    //var expenditure = Model.GetExpenditure();
+    //var expenditureDays = expenditure != null ? expenditure.Days : new List<ExpenditureDayData>();
+
+    //// Expenditure days aren't necessarily stored in date order, so need to sort.
+    //expenditureDays = expenditureDays
+    //    .Where(d => d.Worked)
+    //    .OrderBy(d => d.ExpenditureDate)
+    //    .ToList();
+    var expenditureDays = Model.GetExpenditureAsList();
+
+    bool isValidExpenditureRecord = true;
+}
+@functions
+{
+    //public bool I
+}
+<div class="row">
+
+    <h1>Record of Expenditure - @product - @Model.FirstName @Model.LastName</h1>
+    <p>Week Ending: <strong>@Model.WeekEndingDate</strong></p>
+
+    <p>Please confirm the following details are correct.</p>
+
+    <div class="confirm">
+
+        @foreach (var expenditureDay in expenditureDays)
+        {
+            if(expenditureDay.Worked)
+            {  
+            var date = Model.FormatDayMonthYear(expenditureDay.ExpenditureDate);
+            string arriveHomeTime = Model.FormatMinutes(expenditureDay.ArriveHomeMinutes);
+            string departHomeTime = Model.FormatMinutes(expenditureDay.DepartHomeMinutes);
+            var travelMode = expenditureDay.TravelMode;
+            var startPostcode = expenditureDay.StartPostcode;
+            var endPostcode = expenditureDay.EndPostcode;
+            var sitePostcode = expenditureDay.SitePostcode;
+            var mileage = expenditureDay.Mileage;
+            var travelAmount = expenditureDay.TravelAmount;
+            bool hasReceipts = expenditureDay.HasReceipts;
+            bool purchasedFood = expenditureDay.PurchasedFood;
+            bool isHomePostCode = expenditureDay.IsHomePostCode;
+            var subsistenceAmount = expenditureDay.SubsistenceAmount;
+
+            bool isValidExpense = true;
+
+            <h2>On @date</h2>
+            
+            if (string.IsNullOrWhiteSpace(@departHomeTime))
+            {
+                <p class="error">You must specify the time you left home.</p>
+                isValidExpense = false;
+                isValidExpenditureRecord = false;
+            }
+
+            if (string.IsNullOrWhiteSpace(@arriveHomeTime))
+            {
+                <p class="error">You must specify the time you arrived home.</p>
+                isValidExpense = false;
+                isValidExpenditureRecord = false;
+            }
+
+            if (isValidExpense)
+            {
+                <p>
+                    You left home at
+                    <strong>@departHomeTime</strong>
+                    and arrived home at
+                    <strong>@arriveHomeTime</strong>.
+                </p>
+            }
+
+            switch (travelMode)
+            {
+                case "Car":
+                case "Bicycle":
+                    if (string.IsNullOrWhiteSpace(@startPostcode))
+                    {
+                        <p class="error">You must provide a valid start postcode.</p>
+                        isValidExpense = false;
+                        isValidExpenditureRecord = false;
+                    }
+
+                    if (string.IsNullOrWhiteSpace(@sitePostcode))
+                    {
+                        <p class="error">You must provide a valid site postcode.</p>
+                        isValidExpense = false;
+                        isValidExpenditureRecord = false;
+                    }
+
+                    if (string.IsNullOrWhiteSpace(@endPostcode))
+                    {
+                        <p class="error">You must provide a valid end postcode.</p>
+                        isValidExpense = false;
+                        isValidExpenditureRecord = false;
+                    }
+
+                    if (!Model.IsInteger(@mileage.ToString(CultureInfo.InvariantCulture)))
+                    {
+                        <p class="error">You must provide valid mileage. Mileage must be number, for example 7.</p>
+
+                    }
+
+                    if (isValidExpense)
+                    {
+                        <p>
+                            You travelled by <strong>@travelMode.ToLower()</strong> from <strong>@startPostcode</strong> to <strong>@sitePostcode</strong> and on to <strong>@endPostcode</strong> for a total distance of <strong>@mileage miles</strong>.
+                        </p>
+                        if (!isHomePostCode)
+                        {
+                            <p>This was <strong>not your home postcode</strong>.</p>
+                        }
+                    }
+
+                    break;
+                case "Public Transport":
+                case "Taxi":
+
+                    if (!Model.IsDecimalToTwoDecimalPlaces(travelAmount.ToString(CultureInfo.InvariantCulture)))
+                    {
+                        <p class="error">You must provide a valid travel amount, for example 6.57.</p>
+
+                        isValidExpense = false;
+                        isValidExpenditureRecord = false;
+                    }
+
+                    if (isValidExpense)
+                    {
+                        <p>
+                            You travelled by <strong>@travelMode.ToLower()</strong> at a cost of <strong>@travelAmount</strong>.
+                        </p>
+                    }
+
+                    break;
+            }
+
+                if(!purchasedFood && hasReceipts)
+                {
+                    <p class="error">You cannot have receipts for food you did not purchase.  Please either indicate you have reciepts and provide details or state you did not purchase food and drink.</p>
+                    //isValidExpense = false;
+                    isValidExpenditureRecord = false;
+                }
+                else
+                {
+                    if(!purchasedFood)
+                    {
+                        <p>You <strong>did not</strong> purchase food or drink.</p>
+                        <p class="error">Please note if you do not record food and drink details you cannot claim the Tax and NIC relief available.</p>
+                    }
+
+                    if(hasReceipts)
+                    {
+                        if(!Model.IsDecimalToTwoDecimalPlaces(subsistenceAmount.ToString(CultureInfo.InvariantCulture)))
+                        {
+                            <p class="error">You have entered an invalid amount for your receipts of Food and Drink.</p>
+
+                            isValidExpense = false;
+                            isValidExpenditureRecord = false;
+                        }
+                    }
+
+                    if(isValidExpense)
+                    {
+                        if(hasReceipts)
+                        {
+                            <p>
+                                You hold <strong>receipts</strong> for this day.
+                            </p>
+                        }
+                    }
+                }
+            }
+        }
+
+        @using(Html.BeginForm("SaveChanges", "Expense", FormMethod.Post))
+        {
+            // assigning the Model straight to the TempData collection fails so assigning to temp variable first - this code is all part of the ugly hack until validation can be done on the actual expense page
+            var tempModel = Model;
+            TempData["tempModel"] = tempModel;
+
+            if(isValidExpenditureRecord)
+            {
+                @Html.HiddenFor(m => m.FirstName)
+                @Html.HiddenFor(m => m.LastName)
+                @Html.HiddenFor(m => m.PayrollNumber)
+                @Html.HiddenFor(m => m.Year)
+                @Html.HiddenFor(m => m.Week)
+                @Html.HiddenFor(m => m.Product)
+                @Html.HiddenFor(m => m.DateFrom)
+                @Html.HiddenFor(m => m.DateTo)
+                @Html.HiddenFor(m => m.WeekEndingDate)
+
+                <div>
+                    @Html.ActionLink("Edit these values", "Expenditure", "Expense", routeValues, null)
+                </div>
+
+                <input type="submit" value="I confirm these details are correct" />
+            }
+            else
+            {
+                <!-- TODO: Update expenditure record with error, this doesn't work. However, if we do page validation it will be unnecessary -->
+                @*Model.HasExpenditureErrors = true;
+                @Html.HiddenFor(m => m.HasExpenditureErrors)*@
+                <div>
+                    @Html.ActionLink("Please correct the errors and resubmit", "Expenditure", "Expense", routeValues, null)
+                </div>
+            }
+        }
+    </div>
+</div>

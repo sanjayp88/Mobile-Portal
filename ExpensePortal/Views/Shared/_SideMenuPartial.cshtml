@@ -1,0 +1,61 @@
+﻿@using ExpensePortal.Helpers
+@{
+    DocumentHelper _documentHelper = new DocumentHelper();
+    _documentHelper.SetProductNameAndPayrollNumber();
+}
+<div class="divMenu">
+    @*<div>
+        <h3 class="h3css">Submenu</h3>
+    </div>*@
+
+  <div class="ProductCSS">
+      <a class="DActive" id="ProductHeaderId" href='/Expense/Products/@DocumentHelper.ProductType'>@Html.Raw(DocumentHelper.ProductType == "BetterPay" ? "BetterPayments" : DocumentHelper.ProductType) </a>
+    </div>
+
+    <div class="divUlLi">
+        <ul>
+            <li><a class="DActive" id="Expenditure" href='/Expense/Overview?ProductID=@DocumentHelper.ProductId'>Expenditure </a></li>
+
+            @{
+                var GetCategorylists = DocumentHelper.CategoryList.ToList();
+
+                for (int i = 0; i <= GetCategorylists.Count - 1; i++)
+                {
+                    var CategoryName = GetCategorylists[i];
+                    @*<li><a href='/Document/Documents/@CategoryName'>@CategoryName+s</a></li>*@
+                      <li  ><a id="Payslip" class="DActive" href='/Document/Documents/Payslip'>Payslips</a></li>
+
+                }
+}
+        </ul>
+
+    </div>
+
+</div>
+
+<div  id="divleft-menu" class="left-menu">
+    <!-----------------menu---------------->
+    <label for="show-menu" class="show-menu"><!--Menu--> <img src="/Content/Images/ico-mobile-menu.png"  style="padding: 2px 6px 0 0;" class="imgcls" /><span style="  margin-right: 5px;">  <a  style="color:#fff; text-decoration:none; font-size: 21px;" href='/Expense/Products/@DocumentHelper.ProductType'>@Html.Raw(DocumentHelper.ProductType == "BetterPay" ? "BetterPayments" : DocumentHelper.ProductType) </a>  </span></label>
+    <input type="checkbox" id="show-menu" role="button" style=" display: none; -webkit-appearance: none;" />
+    <ul id="menu">
+        @*<li><a class="DActive" id="ProductHeaderId2" href='/Expense/Products/@DocumentHelper.ProductType'>@Html.Raw(DocumentHelper.ProductType == "BetterPay" ? "BetterPayments" : DocumentHelper.ProductType) </a></li>*@
+        <li><a class="DActive" id="Expenditure2" href='/Expense/Overview?ProductID=@DocumentHelper.ProductId'>Expenditure </a></li>
+
+        @{
+            var GetCategorylists1 = DocumentHelper.CategoryList.ToList();
+
+            for (int i = 0; i <= GetCategorylists1.Count - 1; i++)
+            {
+                var CategoryName = GetCategorylists1[i];
+                @*<li><a href='/Document/Documents/@CategoryName'>@CategoryName+s</a></li>*@
+                <li><a id="Payslip2" class="DActive" href='/Document/Documents/Payslip'>Payslips</a></li>
+
+            }
+        }
+        
+
+    </ul>
+
+    <!----------------menu----------------->
+
+</div>

@@ -1,0 +1,50 @@
+﻿@model ExpensePortal.Models.ExpenditureViewModel
+@{
+    ViewBag.Title = "Overview";
+}
+<div class="row">
+
+    <h1>Expenses Portal - @Model.Product</h1>
+    <p>
+        System to record Records Of Expenditure
+    </p>
+
+    <p>
+        Click <a href="/content/docs/help.pdf" target="_blank">here for instructions</a> on how to use this site.<br /><br />
+        <a href="/content/docs/Portal Instructions - Polish.pdf" target="_blank">kliknij tu na instrukcje po polsku'</a>
+    </p>
+
+    @using (Html.BeginForm("Overview", "Expense", FormMethod.Post))
+    {
+        @Html.HiddenFor(m => m.UserName)
+        @Html.HiddenFor(m => m.ProductID)
+        <input type="submit" value="Records of Expenditure (this week)">
+    }
+    
+    @using(Html.BeginForm("Overview", "Expense", FormMethod.Post))
+    {
+        @Html.JQueryUI().Datepicker("date", DateTime.Now.AddDays(-(int)DateTime.Now.DayOfWeek))
+        //@Html.JQueryUI().DatepickerFor(m => m.WeekDate, DateTime.Now.AddDays(-(int)DateTime.Now.DayOfWeek)).MinDate(DateTime.Today.AddYears(-3)).MaxDate(DateTime.Today.AddMonths(1)).ShowWeek(true).
+        @Html.HiddenFor(m => m.UserName)
+        @Html.HiddenFor(m => m.ProductID)
+        <input type="submit" value="Go to week">
+    }
+</div>
+@section scripts
+{
+  
+
+    <script>
+
+    $(document).ready(function () {
+        
+        $('.DActive').removeClass('Active');
+        $('#Expenditure').addClass('Active');
+        $('#Expenditure2').addClass('Active');
+
+    });
+
+    </script>
+
+}
+

@@ -1,0 +1,777 @@
+﻿@model ExpensePortal.Models.ExpenditureViewModel
+@{
+    ViewBag.Title = "Expenditure";
+}
+@{
+    var monday = Model.DateFrom;
+    var tuesday = monday.AddDays(1);
+    var wednesday = monday.AddDays(2);
+    var thursday = monday.AddDays(3);
+    var friday = monday.AddDays(4);
+    var saturday = monday.AddDays(5);
+    var sunday = Model.DateTo;
+
+    var mondayDateString = Model.FormatDayMonthYear(monday);
+    var tuesdayDateString = Model.FormatDayMonthYear(tuesday);
+    var wednesdayDateString = Model.FormatDayMonthYear(wednesday);
+    var thursdayDateString = Model.FormatDayMonthYear(thursday);
+    var fridayDateString = Model.FormatDayMonthYear(friday);
+    var saturdayDateString = Model.FormatDayMonthYear(saturday);
+    var sundayDateString = Model.FormatDayMonthYear(sunday);
+}
+<style>
+    .form {
+        background: none;
+        border: none;
+    }
+</style>
+
+@helper RenderNoReceiptsNotification()
+{
+    <p>
+        <strong>
+            Note: Standard subsistence allowance will be applied; <br /> £5 if out of the house for more than 5 hours but less than 10 hours.
+            <br />£10 if you have been out of the house for more than 10 hours.
+        </strong>
+    </p>
+}
+
+<div class="row">
+
+    <h1>Record of Expenditure - @Model.Product - @Model.FirstName @Model.LastName</h1>
+
+    <p>Week Ending: @Model.WeekEndingDate<p>
+
+        <div>
+            @Html.ActionLink("Last Week", "Expenditure", "Expense", new { payrollNumber = Model.PayrollNumber, year = Model.TryGetLastYear(), week = Model.GetLastWeekNumber(), product = Model.Product }, null) |
+            @Html.ActionLink("Next Week", "Expenditure", "Expense", new { payrollNumber = Model.PayrollNumber, year = Model.TryGetNextYear(), week = Model.GetNextWeekNumber(), product = Model.Product }, null)
+        </div>
+
+        @using(Html.BeginForm("ConfirmExpenditure", "Expense", FormMethod.Post, new { @class = "form" }))
+        {
+            @Html.HiddenFor(m => m.PayrollNumber)
+            @Html.HiddenFor(m => m.Year)
+            @Html.HiddenFor(m => m.Week)
+            @Html.HiddenFor(m => m.Product)
+            @Html.HiddenFor(m => m.DateFrom)
+            @Html.HiddenFor(m => m.DateTo)
+
+            <div class="week">
+                <div class="day" data-day="day0">
+                    <div class="inner">
+                        <h2>@mondayDateString</h2>
+
+                        @Html.LabelFor(m => m.WorkedMonday)
+                        @Html.CheckBoxFor(m => m.WorkedMonday, new { @checked = "checked" })
+
+                        @Html.LabelFor(m => m.SelectedTravelModeMondayID)
+                        @Html.DropDownListFor(m => m.SelectedTravelModeMondayID, Model.TravelModeItems, new { @class = "travel0" })
+                    </div>
+                </div>
+
+                <div class="day" data-day="day1">
+                    <div class="inner">
+
+                        <h2>@tuesdayDateString</h2>
+
+                        @Html.LabelFor(m => m.WorkedTuesday)
+                        @Html.CheckBoxFor(m => m.WorkedTuesday, new { @checked = "checked" })
+
+                        @Html.LabelFor(m => m.SelectedTravelModeTuesdayID)
+                        @Html.DropDownListFor(m => m.SelectedTravelModeTuesdayID, Model.TravelModeItems, new { @class = "travel1" })
+                    </div>
+                </div>
+
+                <div class="day" data-day="day2">
+                    <div class="inner">
+                        <h2>@wednesdayDateString</h2>
+
+                        @Html.LabelFor(m => m.WorkedWednesday)
+                        @Html.CheckBoxFor(m => m.WorkedWednesday, new { @checked = "checked" })
+
+                        @Html.LabelFor(m => m.SelectedTravelModeWednesdayID)
+                        @Html.DropDownListFor(m => m.SelectedTravelModeWednesdayID, Model.TravelModeItems, new { @class = "travel2" })
+                    </div>
+                </div>
+
+                <div class="day" data-day="day3">
+                    <div class="inner">
+                        <h2>@thursdayDateString</h2>
+
+                        @Html.LabelFor(m => m.WorkedThursday)
+                        @Html.CheckBoxFor(m => m.WorkedThursday, new { @checked = "checked" })
+
+                        @Html.LabelFor(m => m.SelectedTravelModeThursdayID)
+                        @Html.DropDownListFor(m => m.SelectedTravelModeThursdayID, Model.TravelModeItems, new { @class = "travel3" })
+                    </div>
+                </div>
+
+                <div class="day" data-day="day4">
+                    <div class="inner">
+                        <h2>@fridayDateString</h2>
+
+                        @Html.LabelFor(m => m.WorkedFriday)
+                        @Html.CheckBoxFor(m => m.WorkedFriday, new { @checked = "checked" })
+
+                        @Html.LabelFor(m => m.SelectedTravelModeFridayID)
+                        @Html.DropDownListFor(m => m.SelectedTravelModeFridayID, Model.TravelModeItems, new { @class = "travel4" })
+                    </div>
+                </div>
+
+                <div class="day" data-day="day5">
+                    <div class="inner">
+                        <h2>@saturdayDateString</h2>
+
+                        @Html.LabelFor(m => m.WorkedSaturday)
+                        @Html.CheckBoxFor(m => m.WorkedSaturday, new { @checked = "checked" })
+
+                        @Html.LabelFor(m => m.SelectedTravelModeSaturdayID)
+                        @Html.DropDownListFor(m => m.SelectedTravelModeSaturdayID, Model.TravelModeItems, new { @class = "travel5" })
+                    </div>
+                </div>
+
+                <div class="day" data-day="day6">
+                    <div class="inner">
+                        <h2>@sundayDateString</h2>
+
+                        @Html.LabelFor(m => m.WorkedSunday)
+                        @Html.CheckBoxFor(m => m.WorkedSunday, new { @checked = "checked" })
+
+                        @Html.LabelFor(m => m.SelectedTravelModeSundayID)
+                        @Html.DropDownListFor(m => m.SelectedTravelModeSundayID, Model.TravelModeItems, new { @class = "travel6" })
+                    </div>
+                </div>
+
+            </div>
+
+        <!-- Monday -->
+            <div style="display: none;" class="expenditure day0">
+                <h2 class="day0">Edit @mondayDateString</h2>
+
+                <div class="sixcol">
+                    <div class="input-group">
+                        <div class="field time">
+                            @Html.LabelFor(m => m.DepartHomeTimeMonday)
+                            @Html.TextBoxFor(m => m.DepartHomeTimeMonday, new { @placeholder = "24h:mm" })
+                        </div>
+                        <div class="field time">
+                            @Html.LabelFor(m => m.ArriveHomeTimeMonday)
+                            @Html.TextBoxFor(m => m.ArriveHomeTimeMonday, new { @placeholder = "24h:mm" })
+                        </div>
+                        <div class="clear"></div>
+                    </div>
+
+                    <div class="fd-fields input-group">
+                        <div>
+                            @Html.LabelFor(m => m.DidNotPurchaseFoodMonday)
+                            @Html.CheckBoxFor(m => m.DidNotPurchaseFoodMonday, new { @checked = "checked" })
+                        </div>
+
+                        <div>
+                            @Html.LabelFor(m => m.HasReceiptsMonday)
+                            @Html.CheckBoxFor(m => m.HasReceiptsMonday, new { @checked = "checked", @class = "have_receipts" })
+                            @{ string displayMondayAmount = Model.HasReceiptsMonday ? "inline" : "none"; }
+                            <div class="subsistence_amount" style="display: @displayMondayAmount">
+                                @Html.LabelFor(m => m.SubsistenceAmountMonday)
+                                @Html.TextBoxFor(m => m.SubsistenceAmountMonday)
+                            </div>
+
+                            <div>
+                                @Html.LabelFor(m => m.UnableToGetReceiptsMonday)
+                                @Html.CheckBoxFor(m => m.UnableToGetReceiptsMonday, new { @checked = "checked", @class = "no_receipts" })
+                                <div class="no_receipts_notification" style="display: none">
+                                    @RenderNoReceiptsNotification()
+                                </div>
+                            </div>
+
+                            <div>
+                                @Html.LabelFor(m => m.FoodDetailMonday)<br />
+                                @Html.TextAreaFor(m => m.FoodDetailMonday)
+                            </div>
+                        </div>
+                    </div>
+
+                </div>
+
+                <div class="sixcol last">
+
+                    <div class="car bicycle travel0 input-group">
+
+                        <h2>Travel by car/bicycle</h2>
+                        <div class="field postcode">
+                            @Html.LabelFor(m => m.StartPostcodeMonday)
+                            @Html.TextBoxFor(m => m.StartPostcodeMonday)
+                        </div>
+                        <div class="field postcode">
+                            @Html.LabelFor(m => m.SitePostcodeMonday)
+                            @Html.TextBoxFor(m => m.SitePostcodeMonday)
+                        </div>
+                        <div class="field postcode">
+                            @Html.LabelFor(m => m.EndPostcodeMonday)
+                            @Html.TextBoxFor(m => m.EndPostcodeMonday)
+                        </div>
+                        <div class="field postcode">
+                            @Html.LabelFor(m => m.MileageMonday)
+                            @Html.TextBoxFor(m => m.MileageMonday)
+                        </div>
+                        <div class="clear"></div>
+
+                        @Html.LabelFor(m => m.NotHomePostcodeMonday)
+                        @Html.CheckBoxFor(m => m.NotHomePostcodeMonday, new { @checked = "checked" })
+
+                    </div>
+
+                    <div class="public_transport taxi travel0 input-group">
+                        <h2>Public transport/taxi</h2>
+
+                        @Html.LabelFor(m => m.TravelAmountMonday)
+                        @Html.TextBoxFor(m => m.TravelAmountMonday)
+                    </div>
+                </div>
+            </div> <!-- End Monday -->
+
+        <!-- Tuesday -->
+            <div style="display: none;" class="expenditure day1">
+                <h2 class="day1">Edit @tuesdayDateString</h2>
+
+                <div class="sixcol">
+                    <div class="input-group">
+                        <div class="field time">
+                            @Html.LabelFor(m => m.DepartHomeTimeTuesday)
+                            @Html.TextBoxFor(m => m.DepartHomeTimeTuesday, new { @placeholder = "24h:mm" })
+                        </div>
+                        <div class="field time">
+                            @Html.LabelFor(m => m.ArriveHomeTimeTuesday)
+                            @Html.TextBoxFor(m => m.ArriveHomeTimeTuesday, new { @placeholder = "24h:mm" })
+                        </div>
+                        <div class="clear"></div>
+                    </div>
+
+                    <div class="fd-fields input-group">
+                        <div>
+                            @Html.LabelFor(m => m.DidNotPurchaseFoodTuesday)
+                            @Html.CheckBoxFor(m => m.DidNotPurchaseFoodTuesday, new { @checked = "checked" })
+                        </div>
+
+                        <div>
+                            @Html.LabelFor(m => m.HasReceiptsTuesday)
+                            @Html.CheckBoxFor(m => m.HasReceiptsTuesday, new { @checked = "checked", @class = "have_receipts" })
+                            @{ string displayTuesdayAmount = Model.HasReceiptsTuesday ? "inline" : "none"; }
+                            <div class="subsistence_amount" style="display: @displayTuesdayAmount">
+                                @Html.LabelFor(m => m.SubsistenceAmountTuesday)
+                                @Html.TextBoxFor(m => m.SubsistenceAmountTuesday)
+                            </div>
+
+                            <div>
+                                @Html.LabelFor(m => m.UnableToGetReceiptsTuesday)
+                                @Html.CheckBoxFor(m => m.UnableToGetReceiptsTuesday, new { @checked = "checked", @class = "no_receipts" })
+                                <div class="no_receipts_notification" style="display: none">
+                                    @RenderNoReceiptsNotification()
+                                </div>
+                            </div>
+
+                            <div>
+                                @Html.LabelFor(m => m.FoodDetailTuesday)<br />
+                                @Html.TextAreaFor(m => m.FoodDetailTuesday)
+                            </div>
+                        </div>
+                    </div>
+
+                </div>
+
+                <div class="sixcol last">
+
+                    <div class="car bicycle travel1 input-group">
+
+                        <h2>Travel by car/bicycle</h2>
+                        <div class="field postcode">
+                            @Html.LabelFor(m => m.StartPostcodeTuesday)
+                            @Html.TextBoxFor(m => m.StartPostcodeTuesday)
+                        </div>
+                        <div class="field postcode">
+                            @Html.LabelFor(m => m.SitePostcodeTuesday)
+                            @Html.TextBoxFor(m => m.SitePostcodeTuesday)
+                        </div>
+                        <div class="field postcode">
+                            @Html.LabelFor(m => m.EndPostcodeTuesday)
+                            @Html.TextBoxFor(m => m.EndPostcodeTuesday)
+                        </div>
+                        <div class="field postcode">
+                            @Html.LabelFor(m => m.MileageTuesday)
+                            @Html.TextBoxFor(m => m.MileageTuesday)
+                        </div>
+                        <div class="clear"></div>
+
+                        @Html.LabelFor(m => m.NotHomePostcodeTuesday)
+                        @Html.CheckBoxFor(m => m.NotHomePostcodeTuesday, new { @checked = "checked" })
+
+                    </div>
+
+                    <div class="public_transport taxi travel1 input-group">
+                        <h2>Public transport/taxi</h2>
+
+                        @Html.LabelFor(m => m.TravelAmountTuesday)
+                        @Html.TextBoxFor(m => m.TravelAmountTuesday)
+                    </div>
+                </div>
+            </div> <!-- End Tuesday -->
+
+
+        <!-- Wednesday -->
+            <div style="display: none;" class="expenditure day2">
+                <h2 class="day2">Edit @wednesdayDateString</h2>
+
+                <div class="sixcol">
+                    <div class="input-group">
+                        <div class="field time">
+                            @Html.LabelFor(m => m.DepartHomeTimeWednesday)
+                            @Html.TextBoxFor(m => m.DepartHomeTimeWednesday, new { @placeholder = "24h:mm" })
+                        </div>
+                        <div class="field time">
+                            @Html.LabelFor(m => m.ArriveHomeTimeWednesday)
+                            @Html.TextBoxFor(m => m.ArriveHomeTimeWednesday, new { @placeholder = "24h:mm" })
+                        </div>
+                        <div class="clear"></div>
+                    </div>
+
+                    <div class="fd-fields input-group">
+                        <div>
+                            @Html.LabelFor(m => m.DidNotPurchaseFoodWednesday)
+                            @Html.CheckBoxFor(m => m.DidNotPurchaseFoodWednesday, new { @checked = "checked" })
+                        </div>
+
+                        <div>
+                            @Html.LabelFor(m => m.HasReceiptsWednesday)
+                            @Html.CheckBoxFor(m => m.HasReceiptsWednesday, new { @checked = "checked", @class = "have_receipts" })
+                            @{ string displayWednesdayAmount = Model.HasReceiptsWednesday ? "inline" : "none"; }
+                            <div class="subsistence_amount" style="display: @displayWednesdayAmount">
+                                @Html.LabelFor(m => m.SubsistenceAmountWednesday)
+                                @Html.TextBoxFor(m => m.SubsistenceAmountWednesday)
+                            </div>
+
+                            <div>
+                                @Html.LabelFor(m => m.UnableToGetReceiptsWednesday)
+                                @Html.CheckBoxFor(m => m.UnableToGetReceiptsWednesday, new { @checked = "checked", @class = "no_receipts" })
+                                <div class="no_receipts_notification" style="display: none">
+                                    @RenderNoReceiptsNotification()
+                                </div>
+                            </div>
+
+                            <div>
+                                @Html.LabelFor(m => m.FoodDetailWednesday)<br />
+                                @Html.TextAreaFor(m => m.FoodDetailWednesday)
+                            </div>
+                        </div>
+                    </div>
+
+                </div>
+
+                <div class="sixcol last">
+
+                    <div class="car bicycle travel2 input-group">
+
+                        <h2>Travel by car/bicycle</h2>
+                        <div class="field postcode">
+                            @Html.LabelFor(m => m.StartPostcodeWednesday)
+                            @Html.TextBoxFor(m => m.StartPostcodeWednesday)
+                        </div>
+                        <div class="field postcode">
+                            @Html.LabelFor(m => m.SitePostcodeWednesday)
+                            @Html.TextBoxFor(m => m.SitePostcodeWednesday)
+                        </div>
+                        <div class="field postcode">
+                            @Html.LabelFor(m => m.EndPostcodeWednesday)
+                            @Html.TextBoxFor(m => m.EndPostcodeWednesday)
+                        </div>
+                        <div class="field postcode">
+                            @Html.LabelFor(m => m.MileageWednesday)
+                            @Html.TextBoxFor(m => m.MileageWednesday)
+                        </div>
+                        <div class="clear"></div>
+
+                        @Html.LabelFor(m => m.NotHomePostcodeWednesday)
+                        @Html.CheckBoxFor(m => m.NotHomePostcodeWednesday, new { @checked = "checked" })
+
+                    </div>
+
+                    <div class="public_transport taxi travel2 input-group">
+                        <h2>Public transport/taxi</h2>
+
+                        @Html.LabelFor(m => m.TravelAmountWednesday)
+                        @Html.TextBoxFor(m => m.TravelAmountWednesday)
+                    </div>
+                </div>
+            </div> <!-- End Wednesday -->
+
+        <!-- Thursday -->
+            <div style="display: none;" class="expenditure day3">
+                <h2 class="day3">Edit @thursdayDateString</h2>
+
+                <div class="sixcol">
+                    <div class="input-group">
+                        <div class="field time">
+                            @Html.LabelFor(m => m.DepartHomeTimeThursday)
+                            @Html.TextBoxFor(m => m.DepartHomeTimeThursday, new { @placeholder = "24h:mm" })
+                        </div>
+                        <div class="field time">
+                            @Html.LabelFor(m => m.ArriveHomeTimeThursday)
+                            @Html.TextBoxFor(m => m.ArriveHomeTimeThursday, new { @placeholder = "24h:mm" })
+                        </div>
+                        <div class="clear"></div>
+                    </div>
+
+                    <div class="fd-fields input-group">
+                        <div>
+                            @Html.LabelFor(m => m.DidNotPurchaseFoodThursday)
+                            @Html.CheckBoxFor(m => m.DidNotPurchaseFoodThursday, new { @checked = "checked" })
+                        </div>
+
+                        <div>
+                            @Html.LabelFor(m => m.HasReceiptsThursday)
+                            @Html.CheckBoxFor(m => m.HasReceiptsThursday, new { @checked = "checked", @class = "have_receipts" })
+                            @{ string displayThursdayAmount = Model.HasReceiptsThursday ? "inline" : "none"; }
+                            <div class="subsistence_amount" style="display: @displayThursdayAmount">
+                                @Html.LabelFor(m => m.SubsistenceAmountThursday)
+                                @Html.TextBoxFor(m => m.SubsistenceAmountThursday)
+                            </div>
+
+                            <div>
+                                @Html.LabelFor(m => m.UnableToGetReceiptsThursday)
+                                @Html.CheckBoxFor(m => m.UnableToGetReceiptsThursday, new { @checked = "checked", @class = "no_receipts" })
+                                <div class="no_receipts_notification" style="display: none">
+                                    @RenderNoReceiptsNotification()
+                                </div>
+                            </div>
+
+                            <div>
+                                @Html.LabelFor(m => m.FoodDetailThursday)<br />
+                                @Html.TextAreaFor(m => m.FoodDetailThursday)
+                            </div>
+                        </div>
+                    </div>
+
+                </div>
+
+                <div class="sixcol last">
+
+                    <div class="car bicycle travel3 input-group">
+
+                        <h2>Travel by car/bicycle</h2>
+                        <div class="field postcode">
+                            @Html.LabelFor(m => m.StartPostcodeThursday)
+                            @Html.TextBoxFor(m => m.StartPostcodeThursday)
+                        </div>
+                        <div class="field postcode">
+                            @Html.LabelFor(m => m.SitePostcodeThursday)
+                            @Html.TextBoxFor(m => m.SitePostcodeThursday)
+                        </div>
+                        <div class="field postcode">
+                            @Html.LabelFor(m => m.EndPostcodeThursday)
+                            @Html.TextBoxFor(m => m.EndPostcodeThursday)
+                        </div>
+                        <div class="field postcode">
+                            @Html.LabelFor(m => m.MileageThursday)
+                            @Html.TextBoxFor(m => m.MileageThursday)
+                        </div>
+                        <div class="clear"></div>
+
+                        @Html.LabelFor(m => m.NotHomePostcodeThursday)
+                        @Html.CheckBoxFor(m => m.NotHomePostcodeThursday, new { @checked = "checked" })
+
+                    </div>
+
+                    <div class="public_transport taxi travel3 input-group">
+                        <h2>Public transport/taxi</h2>
+
+                        @Html.LabelFor(m => m.TravelAmountThursday)
+                        @Html.TextBoxFor(m => m.TravelAmountThursday)
+                    </div>
+                </div>
+            </div> <!-- End Thursday -->
+
+        <!-- Friday -->
+            <div style="display: none;" class="expenditure day4">
+                <h2 class="day4">Edit @fridayDateString</h2>
+
+                <div class="sixcol">
+                    <div class="input-group">
+                        <div class="field time">
+                            @Html.LabelFor(m => m.DepartHomeTimeFriday)
+                            @Html.TextBoxFor(m => m.DepartHomeTimeFriday, new { @placeholder = "24h:mm" })
+                        </div>
+                        <div class="field time">
+                            @Html.LabelFor(m => m.ArriveHomeTimeFriday)
+                            @Html.TextBoxFor(m => m.ArriveHomeTimeFriday, new { @placeholder = "24h:mm" })
+                        </div>
+                        <div class="clear"></div>
+                    </div>
+
+                    <div class="fd-fields input-group">
+                        <div>
+                            @Html.LabelFor(m => m.DidNotPurchaseFoodFriday)
+                            @Html.CheckBoxFor(m => m.DidNotPurchaseFoodFriday, new { @checked = "checked" })
+                        </div>
+
+                        <div>
+                            @Html.LabelFor(m => m.HasReceiptsFriday)
+                            @Html.CheckBoxFor(m => m.HasReceiptsFriday, new { @checked = "checked", @class = "have_receipts" })
+                            @{ string displayFridayAmount = Model.HasReceiptsFriday ? "inline" : "none"; }
+                            <div class="subsistence_amount" style="display: @displayFridayAmount">
+                                @Html.LabelFor(m => m.SubsistenceAmountFriday)
+                                @Html.TextBoxFor(m => m.SubsistenceAmountFriday)
+                            </div>
+
+                            <div>
+                                @Html.LabelFor(m => m.UnableToGetReceiptsFriday)
+                                @Html.CheckBoxFor(m => m.UnableToGetReceiptsFriday, new { @checked = "checked", @class = "no_receipts" })
+                                <div class="no_receipts_notification" style="display: none">
+                                    @RenderNoReceiptsNotification()
+                                </div>
+                            </div>
+
+                            <div>
+                                @Html.LabelFor(m => m.FoodDetailFriday)<br />
+                                @Html.TextAreaFor(m => m.FoodDetailFriday)
+                            </div>
+                        </div>
+                    </div>
+
+                </div>
+
+                <div class="sixcol last">
+
+                    <div class="car bicycle travel4 input-group">
+
+                        <h2>Travel by car/bicycle</h2>
+                        <div class="field postcode">
+                            @Html.LabelFor(m => m.StartPostcodeFriday)
+                            @Html.TextBoxFor(m => m.StartPostcodeFriday)
+                        </div>
+                        <div class="field postcode">
+                            @Html.LabelFor(m => m.SitePostcodeFriday)
+                            @Html.TextBoxFor(m => m.SitePostcodeFriday)
+                        </div>
+                        <div class="field postcode">
+                            @Html.LabelFor(m => m.EndPostcodeFriday)
+                            @Html.TextBoxFor(m => m.EndPostcodeFriday)
+                        </div>
+                        <div class="field postcode">
+                            @Html.LabelFor(m => m.MileageFriday)
+                            @Html.TextBoxFor(m => m.MileageFriday)
+                        </div>
+                        <div class="clear"></div>
+
+                        @Html.LabelFor(m => m.NotHomePostcodeFriday)
+                        @Html.CheckBoxFor(m => m.NotHomePostcodeFriday, new { @checked = "checked" })
+
+                    </div>
+
+                    <div class="public_transport taxi travel4 input-group">
+                        <h2>Public transport/taxi</h2>
+
+                        @Html.LabelFor(m => m.TravelAmountFriday)
+                        @Html.TextBoxFor(m => m.TravelAmountFriday)
+                    </div>
+                </div>
+            </div> <!-- End Friday -->
+
+        <!-- Saturday -->
+            <div style="display: none;" class="expenditure day5">
+                <h2 class="day5">Edit @saturdayDateString</h2>
+
+                <div class="sixcol">
+                    <div class="input-group">
+                        <div class="field time">
+                            @Html.LabelFor(m => m.DepartHomeTimeSaturday)
+                            @Html.TextBoxFor(m => m.DepartHomeTimeSaturday, new { @placeholder = "24h:mm" })
+                        </div>
+                        <div class="field time">
+                            @Html.LabelFor(m => m.ArriveHomeTimeSaturday)
+                            @Html.TextBoxFor(m => m.ArriveHomeTimeSaturday, new { @placeholder = "24h:mm" })
+                        </div>
+                        <div class="clear"></div>
+                    </div>
+
+                    <div class="fd-fields input-group">
+                        <div>
+                            @Html.LabelFor(m => m.DidNotPurchaseFoodSaturday)
+                            @Html.CheckBoxFor(m => m.DidNotPurchaseFoodSaturday, new { @checked = "checked" })
+                        </div>
+
+                        <div>
+                            @Html.LabelFor(m => m.HasReceiptsSaturday)
+                            @Html.CheckBoxFor(m => m.HasReceiptsSaturday, new { @checked = "checked", @class = "have_receipts" })
+                            @{ string displaySaturdayAmount = Model.HasReceiptsSaturday ? "inline" : "none"; }
+                            <div class="subsistence_amount" style="display: @displaySaturdayAmount">
+                                @Html.LabelFor(m => m.SubsistenceAmountSaturday)
+                                @Html.TextBoxFor(m => m.SubsistenceAmountSaturday)
+                            </div>
+
+                            <div>
+                                @Html.LabelFor(m => m.UnableToGetReceiptsSaturday)
+                                @Html.CheckBoxFor(m => m.UnableToGetReceiptsSaturday, new { @checked = "checked", @class = "no_receipts" })
+                                <div class="no_receipts_notification" style="display: none">
+                                    @RenderNoReceiptsNotification()
+                                </div>
+                            </div>
+
+                            <div>
+                                @Html.LabelFor(m => m.FoodDetailSaturday)<br />
+                                @Html.TextAreaFor(m => m.FoodDetailSaturday)
+                            </div>
+                        </div>
+                    </div>
+
+                </div>
+
+                <div class="sixcol last">
+
+                    <div class="car bicycle travel5 input-group">
+
+                        <h2>Travel by car/bicycle</h2>
+                        <div class="field postcode">
+                            @Html.LabelFor(m => m.StartPostcodeSaturday)
+                            @Html.TextBoxFor(m => m.StartPostcodeSaturday)
+                        </div>
+                        <div class="field postcode">
+                            @Html.LabelFor(m => m.SitePostcodeSaturday)
+                            @Html.TextBoxFor(m => m.SitePostcodeSaturday)
+                        </div>
+                        <div class="field postcode">
+                            @Html.LabelFor(m => m.EndPostcodeSaturday)
+                            @Html.TextBoxFor(m => m.EndPostcodeSaturday)
+                        </div>
+                        <div class="field postcode">
+                            @Html.LabelFor(m => m.MileageSaturday)
+                            @Html.TextBoxFor(m => m.MileageSaturday)
+                        </div>
+                        <div class="clear"></div>
+
+                        @Html.LabelFor(m => m.NotHomePostcodeSaturday)
+                        @Html.CheckBoxFor(m => m.NotHomePostcodeSaturday, new { @checked = "checked" })
+
+                    </div>
+
+                    <div class="public_transport taxi travel5 input-group">
+                        <h2>Public transport/taxi</h2>
+
+                        @Html.LabelFor(m => m.TravelAmountSaturday)
+                        @Html.TextBoxFor(m => m.TravelAmountSaturday)
+                    </div>
+                </div>
+            </div> <!-- End Saturday -->
+
+        <!-- Sunday -->
+            <div style="display: none;" class="expenditure day6">
+                <h2 class="day6">Edit @sundayDateString</h2>
+
+                <div class="sixcol">
+                    <div class="input-group">
+                        <div class="field time">
+                            @Html.LabelFor(m => m.DepartHomeTimeSunday)
+                            @Html.TextBoxFor(m => m.DepartHomeTimeSunday, new { @placeholder = "24h:mm" })
+                        </div>
+                        <div class="field time">
+                            @Html.LabelFor(m => m.ArriveHomeTimeSunday)
+                            @Html.TextBoxFor(m => m.ArriveHomeTimeSunday, new { @placeholder = "24h:mm" })
+                        </div>
+                        <div class="clear"></div>
+                    </div>
+
+                    <div class="fd-fields input-group">
+                        <div>
+                            @Html.LabelFor(m => m.DidNotPurchaseFoodSunday)
+                            @Html.CheckBoxFor(m => m.DidNotPurchaseFoodSunday, new { @checked = "checked" })
+                        </div>
+
+                        <div>
+                            @Html.LabelFor(m => m.HasReceiptsSunday)
+                            @Html.CheckBoxFor(m => m.HasReceiptsSunday, new { @checked = "checked", @class = "have_receipts" })
+                            @{ string displaySundayAmount = Model.HasReceiptsSunday ? "inline" : "none"; }
+                            <div class="subsistence_amount" style="display: @displaySundayAmount">
+                                @Html.LabelFor(m => m.SubsistenceAmountSunday)
+                                @Html.TextBoxFor(m => m.SubsistenceAmountSunday)
+                            </div>
+
+                            <div>
+                                @Html.LabelFor(m => m.UnableToGetReceiptsSunday)
+                                @Html.CheckBoxFor(m => m.UnableToGetReceiptsSunday, new { @checked = "checked", @class = "no_receipts" })
+                                <div class="no_receipts_notification" style="display: none">
+                                    @RenderNoReceiptsNotification()
+                                </div>
+                            </div>
+
+                            <div>
+                                @Html.LabelFor(m => m.FoodDetailSunday)<br />
+                                @Html.TextAreaFor(m => m.FoodDetailSunday)
+                            </div>
+                        </div>
+                    </div>
+
+                </div>
+
+                <div class="sixcol last">
+
+                    <div class="car bicycle travel6 input-group">
+
+                        <h2>Travel by car/bicycle</h2>
+                        <div class="field postcode">
+                            @Html.LabelFor(m => m.StartPostcodeSunday)
+                            @Html.TextBoxFor(m => m.StartPostcodeSunday)
+                        </div>
+                        <div class="field postcode">
+                            @Html.LabelFor(m => m.SitePostcodeSunday)
+                            @Html.TextBoxFor(m => m.SitePostcodeSunday)
+                        </div>
+                        <div class="field postcode">
+                            @Html.LabelFor(m => m.EndPostcodeSunday)
+                            @Html.TextBoxFor(m => m.EndPostcodeSunday)
+                        </div>
+                        <div class="field postcode">
+                            @Html.LabelFor(m => m.MileageSunday)
+                            @Html.TextBoxFor(m => m.MileageSunday)
+                        </div>
+                        <div class="clear"></div>
+
+                        @Html.LabelFor(m => m.NotHomePostcodeSunday)
+                        @Html.CheckBoxFor(m => m.NotHomePostcodeSunday, new { @checked = "checked" })
+
+                    </div>
+
+                    <div class="public_transport taxi travel6 input-group">
+                        <h2>Public transport/taxi</h2>
+
+                        @Html.LabelFor(m => m.TravelAmountSunday)
+                        @Html.TextBoxFor(m => m.TravelAmountSunday)
+                    </div>
+                </div>
+            </div> <!-- End Sunday -->
+
+            <div class="clear"></div>
+
+            <input type="submit" class="save-day" value="Save Changes">
+        }
+        <!-- End form -->
+</div>
+
+@section scripts
+{
+    <script src="~/Scripts/jquery-ui.min.js"></script>
+    <script src="~/Scripts/jquery-ui-timepicker-addon.js"></script>
+    <script src="~/Scripts/jquery-ui-sliderAccess.js"></script>
+    <script src="~/Scripts/expenditure.js"></script>
+
+
+    <script>
+
+    $(document).ready(function () {
+        
+        $('.DActive').removeClass('Active');
+        $('#Expenditure').addClass('Active');
+        $('#Expenditure2').addClass('Active');
+
+    });
+
+    </script>
+
+}

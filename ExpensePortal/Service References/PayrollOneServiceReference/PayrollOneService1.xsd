@@ -1,0 +1,172 @@
+<?xml version="1.0" encoding="utf-8"?>
+<xs:schema xmlns:tns="http://tempuri.org/" elementFormDefault="qualified" targetNamespace="http://tempuri.org/" xmlns:xs="http://www.w3.org/2001/XMLSchema">
+  <xs:import schemaLocation="http://agukdev01:802/PayrollOneService.svc?xsd=xsd2" namespace="http://schemas.datacontract.org/2004/07/PayrollOneService.API" />
+  <xs:element name="GetPayrolls">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element xmlns:q1="http://schemas.datacontract.org/2004/07/PayrollOneService.API" minOccurs="0" name="company" nillable="true" type="q1:Company" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="GetPayrollsResponse">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element xmlns:q2="http://schemas.datacontract.org/2004/07/PayrollOneService.API" minOccurs="0" name="GetPayrollsResult" nillable="true" type="q2:ArrayOfPayroll" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="Validate">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element xmlns:q3="http://schemas.datacontract.org/2004/07/PayrollOneService.API" minOccurs="0" name="company" nillable="true" type="q3:Company" />
+        <xs:element xmlns:q4="http://schemas.datacontract.org/2004/07/PayrollOneService.API" minOccurs="0" name="employees" nillable="true" type="q4:ArrayOfEmployee" />
+        <xs:element minOccurs="0" name="payrollDescription" nillable="true" type="xs:string" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="ValidateResponse">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element xmlns:q5="http://schemas.datacontract.org/2004/07/PayrollOneService.API" minOccurs="0" name="ValidateResult" nillable="true" type="q5:ArrayOfEmployeeValidation" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="Persist">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element xmlns:q6="http://schemas.datacontract.org/2004/07/PayrollOneService.API" minOccurs="0" name="company" nillable="true" type="q6:Company" />
+        <xs:element minOccurs="0" name="payrollDescription" nillable="true" type="xs:string" />
+        <xs:element xmlns:q7="http://schemas.datacontract.org/2004/07/PayrollOneService.API" minOccurs="0" name="employees" nillable="true" type="q7:ArrayOfEmployee" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="PersistResponse">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element xmlns:q8="http://schemas.datacontract.org/2004/07/PayrollOneService.API" minOccurs="0" name="PersistResult" nillable="true" type="q8:ArrayOfEmployeeValidation" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="GetAll">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="0" name="includeLeavers" type="xs:boolean" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="GetAllResponse">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element xmlns:q9="http://schemas.datacontract.org/2004/07/PayrollOneService.API" minOccurs="0" name="GetAllResult" nillable="true" type="q9:ArrayOfEmployee" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="GetAllForCompany">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element xmlns:q10="http://schemas.datacontract.org/2004/07/PayrollOneService.API" minOccurs="0" name="company" nillable="true" type="q10:Company" />
+        <xs:element minOccurs="0" name="includeLeavers" type="xs:boolean" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="GetAllForCompanyResponse">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element xmlns:q11="http://schemas.datacontract.org/2004/07/PayrollOneService.API" minOccurs="0" name="GetAllForCompanyResult" nillable="true" type="q11:ArrayOfEmployee" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="GetAllForCompanyPayroll">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element xmlns:q12="http://schemas.datacontract.org/2004/07/PayrollOneService.API" minOccurs="0" name="company" nillable="true" type="q12:Company" />
+        <xs:element minOccurs="0" name="payrollDescription" nillable="true" type="xs:string" />
+        <xs:element minOccurs="0" name="includeLeavers" type="xs:boolean" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="GetAllForCompanyPayrollResponse">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element xmlns:q13="http://schemas.datacontract.org/2004/07/PayrollOneService.API" minOccurs="0" name="GetAllForCompanyPayrollResult" nillable="true" type="q13:ArrayOfEmployee" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="PlaceEmployeesOnHoldExcept">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element xmlns:q14="http://schemas.datacontract.org/2004/07/PayrollOneService.API" minOccurs="0" name="exceptEmployees" nillable="true" type="q14:ArrayOfEmployeeCompanyId" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="PlaceEmployeesOnHoldExceptResponse">
+    <xs:complexType>
+      <xs:sequence />
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="ProcessPayroll">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element xmlns:q15="http://schemas.datacontract.org/2004/07/PayrollOneService.API" minOccurs="0" name="company" nillable="true" type="q15:Company" />
+        <xs:element xmlns:q16="http://schemas.datacontract.org/2004/07/PayrollOneService.API" minOccurs="0" name="grossPaymentLines" nillable="true" type="q16:ArrayOfGrossPaymentLine" />
+        <xs:element minOccurs="0" name="payrollDescription" nillable="true" type="xs:string" />
+        <xs:element minOccurs="0" name="returnNetPaymentData" type="xs:boolean" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="ProcessPayrollResponse">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element xmlns:q17="http://schemas.datacontract.org/2004/07/PayrollOneService.API" minOccurs="0" name="ProcessPayrollResult" nillable="true" type="q17:ProcessPayrollAggregateResult" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="TestConnection">
+    <xs:complexType>
+      <xs:sequence />
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="TestConnectionResponse">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="0" name="TestConnectionResult" nillable="true" type="xs:string" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="GetCompanies">
+    <xs:complexType>
+      <xs:sequence />
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="GetCompaniesResponse">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element xmlns:q18="http://schemas.datacontract.org/2004/07/PayrollOneService.API" minOccurs="0" name="GetCompaniesResult" nillable="true" type="q18:ArrayOfCompany" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="CreateCompany">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element xmlns:q19="http://schemas.datacontract.org/2004/07/PayrollOneService.API" minOccurs="0" name="company" nillable="true" type="q19:Company" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="CreateCompanyResponse">
+    <xs:complexType>
+      <xs:sequence />
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="ResetData">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element xmlns:q20="http://schemas.datacontract.org/2004/07/PayrollOneService.API" minOccurs="0" name="company" nillable="true" type="q20:Company" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="ResetDataResponse">
+    <xs:complexType>
+      <xs:sequence />
+    </xs:complexType>
+  </xs:element>
+</xs:schema>

@@ -1,0 +1,71 @@
+﻿@model ExpensePortal.Models.LoginViewModel
+@{
+    ViewBag.Title = "Login";
+}
+<div class="row">
+
+    <h1>@ViewBag.Title</h1>
+
+    <div class="sixcol">
+        <ul class=flashes>
+            @if(ViewBag.FlashMessage != null)
+            {
+                <li>
+                    @ViewBag.FlashMessage
+                </li>
+            }
+        </ul>
+        @using(Html.BeginForm("Login", "Account", new { ViewBag.ReturnUrl }, FormMethod.Post, new { @class = "form-horizontal", role = "form" }))
+        {
+            @Html.AntiForgeryToken()
+
+            <!-- TODO: Find class text-danger, might substitute class error -->
+            @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+
+            <div class="field">
+                @Html.LabelFor(m => m.UserName)
+                @Html.TextBoxFor(m => m.UserName)
+                @Html.ValidationMessageFor(m => m.UserName, "", new { @class = "text-danger" })
+            </div>
+
+            <div class="field">
+                @Html.LabelFor(m => m.Password)
+                @Html.PasswordFor(m => m.Password)
+                @Html.ValidationMessageFor(m => m.Password, "", new { @class = "text-danger" })
+            </div>
+
+            <input type="submit" value="Login" />
+        }
+
+        @Html.ActionLink("Forgotten Password", "ForgotPassword")
+    </div>
+</div>
+
+@section scripts
+{
+ <script type="text/javascript">
+    $(document).ready(function () {
+        $('#UserName').focus();
+        $('.divMenu').html('');
+        $('.divMenu').css('display', 'none');
+        $('#divleft-menu').addClass('HideMenu');
+        
+        $('.user').css('display', 'none');
+       
+    });
+</script>
+
+}
+
+
+
+
+
+
+
+
+
+
+
+
+

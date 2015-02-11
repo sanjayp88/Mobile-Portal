@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ReferenceGroup xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema" ID="e1d57ba2-e555-4f41-a415-57fa0ad6f837" xmlns="urn:schemas-microsoft-com:xml-wcfservicemap">
+  <ClientOptions>
+    <GenerateAsynchronousMethods>false</GenerateAsynchronousMethods>
+    <GenerateTaskBasedAsynchronousMethod>true</GenerateTaskBasedAsynchronousMethod>
+    <EnableDataBinding>true</EnableDataBinding>
+    <ExcludedTypes />
+    <ImportXmlTypes>false</ImportXmlTypes>
+    <GenerateInternalTypes>false</GenerateInternalTypes>
+    <GenerateMessageContracts>false</GenerateMessageContracts>
+    <NamespaceMappings />
+    <CollectionMappings />
+    <GenerateSerializableTypes>true</GenerateSerializableTypes>
+    <Serializer>Auto</Serializer>
+    <UseSerializerForFaults>true</UseSerializerForFaults>
+    <ReferenceAllAssemblies>false</ReferenceAllAssemblies>
+    <ReferencedAssemblies />
+    <ReferencedDataContractTypes />
+    <ServiceContractMappings />
+  </ClientOptions>
+  <MetadataSources>
+    <MetadataSource Address="http://agukdev01:802/PayrollOneService.svc" Protocol="http" SourceId="1" />
+  </MetadataSources>
+  <Metadata>
+    <MetadataFile FileName="PayrollOneService.disco" MetadataType="Disco" ID="8a6fcd55-9567-49b4-9459-050efcc74f00" SourceId="1" SourceUrl="http://agukdev01:802/PayrollOneService.svc?disco" />
+    <MetadataFile FileName="PayrollOneService.xsd" MetadataType="Schema" ID="e919e71e-b607-475d-82c9-5822c4b7cfdf" SourceId="1" SourceUrl="http://agukdev01:802/PayrollOneService.svc?xsd=xsd2" />
+    <MetadataFile FileName="PayrollOneService1.xsd" MetadataType="Schema" ID="94c29998-5009-458c-8fd7-4d14459b8241" SourceId="1" SourceUrl="http://agukdev01:802/PayrollOneService.svc?xsd=xsd0" />
+    <MetadataFile FileName="PayrollOneService2.xsd" MetadataType="Schema" ID="cdc07b5e-406c-4850-8692-bd84f59befc7" SourceId="1" SourceUrl="http://agukdev01:802/PayrollOneService.svc?xsd=xsd1" />
+    <MetadataFile FileName="PayrollOneService.wsdl" MetadataType="Wsdl" ID="50136446-63a2-4268-9f28-b86b1289b366" SourceId="1" SourceUrl="http://agukdev01:802/PayrollOneService.svc?wsdl" />
+  </Metadata>
+  <Extensions>
+    <ExtensionFile FileName="configuration91.svcinfo" Name="configuration91.svcinfo" />
+    <ExtensionFile FileName="configuration.svcinfo" Name="configuration.svcinfo" />
+  </Extensions>
+</ReferenceGroup>

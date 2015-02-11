@@ -1,0 +1,191 @@
+<?xml version="1.0" encoding="utf-8"?>
+<xs:schema xmlns:tns="http://schemas.datacontract.org/2004/07/PayrollOneService.API" elementFormDefault="qualified" targetNamespace="http://schemas.datacontract.org/2004/07/PayrollOneService.API" xmlns:xs="http://www.w3.org/2001/XMLSchema">
+  <xs:complexType name="Company">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="Address1" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="Address2" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="Address3" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="Address4" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="ApplicationMode" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="BankAccountNumber" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="BankReference" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="BankSortCode" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="CompanyKey" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="DisplayName" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="EmailAddress" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="Id" type="xs:int" />
+      <xs:element minOccurs="0" name="InvoiceLogoFileName" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="IsMyPSU" type="xs:boolean" />
+      <xs:element minOccurs="0" name="OmbrosDBDatabaseName" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="OmbrosDBPassword" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="OmbrosDBServer" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="OmbrosDBUserName" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="PaymentFileType" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="PhoneNumber" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="Postcode" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="ProductName" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="SendPortalEmails" type="xs:boolean" />
+      <xs:element minOccurs="0" name="SmsSenderId" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="TraderFileSharePath" nillable="true" type="xs:string" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="Company" nillable="true" type="tns:Company" />
+  <xs:complexType name="ArrayOfPayroll">
+    <xs:sequence>
+      <xs:element minOccurs="0" maxOccurs="unbounded" name="Payroll" nillable="true" type="tns:Payroll" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="ArrayOfPayroll" nillable="true" type="tns:ArrayOfPayroll" />
+  <xs:complexType name="Payroll">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="Description" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="Frequency" nillable="true" type="xs:string" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="Payroll" nillable="true" type="tns:Payroll" />
+  <xs:complexType name="ArrayOfEmployee">
+    <xs:sequence>
+      <xs:element minOccurs="0" maxOccurs="unbounded" name="Employee" nillable="true" type="tns:Employee" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="ArrayOfEmployee" nillable="true" type="tns:ArrayOfEmployee" />
+  <xs:complexType name="Employee">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="Address1" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="Address2" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="Address3" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="Address4" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="AgencyId" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="BankAccountName" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="BankAccountNumber" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="BankName" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="BankSortCode" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="Company" nillable="true" type="tns:Company" />
+      <xs:element minOccurs="0" name="DOB_ISO8601" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="Email" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="EmployeeCompanyName" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="FirstName" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="Id" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="LandLine" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="LeavingDate_ISO8601" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="Mobile" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="NICGrossTD" type="xs:double" />
+      <xs:element minOccurs="0" name="NICategory" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="NiNumber" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="P45Gross" type="xs:double" />
+      <xs:element minOccurs="0" name="P45Tax" type="xs:double" />
+      <xs:element minOccurs="0" name="PayFrequency" type="tns:PayFrequency" />
+      <xs:element minOccurs="0" name="PayrollDescription" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="PostCode" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="RDSKey" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="StartDate_ISO8601" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="Surname" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="TaxCode" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="TaxableGrossTD" type="xs:double" />
+      <xs:element minOccurs="0" name="Title" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="TotalGrossTD" type="xs:double" />
+      <xs:element minOccurs="0" name="TotalTaxTD" type="xs:double" />
+      <xs:element minOccurs="0" name="Week1Basis" type="xs:boolean" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="Employee" nillable="true" type="tns:Employee" />
+  <xs:simpleType name="PayFrequency">
+    <xs:restriction base="xs:string">
+      <xs:enumeration value="Weekly" />
+      <xs:enumeration value="Monthly" />
+      <xs:enumeration value="Fortnightly" />
+    </xs:restriction>
+  </xs:simpleType>
+  <xs:element name="PayFrequency" nillable="true" type="tns:PayFrequency" />
+  <xs:complexType name="ArrayOfEmployeeValidation">
+    <xs:sequence>
+      <xs:element minOccurs="0" maxOccurs="unbounded" name="EmployeeValidation" nillable="true" type="tns:EmployeeValidation" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="ArrayOfEmployeeValidation" nillable="true" type="tns:ArrayOfEmployeeValidation" />
+  <xs:complexType name="EmployeeValidation">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="Candidate" nillable="true" type="tns:Employee" />
+      <xs:element minOccurs="0" name="Record" nillable="true" type="tns:Employee" />
+      <xs:element minOccurs="0" name="Valid" type="xs:boolean" />
+      <xs:element minOccurs="0" name="ValidationMessage" nillable="true" type="xs:string" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="EmployeeValidation" nillable="true" type="tns:EmployeeValidation" />
+  <xs:complexType name="ArrayOfEmployeeCompanyId">
+    <xs:sequence>
+      <xs:element minOccurs="0" maxOccurs="unbounded" name="EmployeeCompanyId" nillable="true" type="tns:EmployeeCompanyId" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="ArrayOfEmployeeCompanyId" nillable="true" type="tns:ArrayOfEmployeeCompanyId" />
+  <xs:complexType name="EmployeeCompanyId">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="Company" nillable="true" type="tns:Company" />
+      <xs:element minOccurs="0" name="EmployeeId" nillable="true" type="xs:string" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="EmployeeCompanyId" nillable="true" type="tns:EmployeeCompanyId" />
+  <xs:complexType name="ArrayOfGrossPaymentLine">
+    <xs:sequence>
+      <xs:element minOccurs="0" maxOccurs="unbounded" name="GrossPaymentLine" nillable="true" type="tns:GrossPaymentLine" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="ArrayOfGrossPaymentLine" nillable="true" type="tns:ArrayOfGrossPaymentLine" />
+  <xs:complexType name="GrossPaymentLine">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="EmployeeCompanyId" nillable="true" type="tns:EmployeeCompanyId" />
+      <xs:element minOccurs="0" name="NonTaxablePay" type="xs:double" />
+      <xs:element minOccurs="0" name="PayFrequency" type="tns:PayFrequency" />
+      <xs:element minOccurs="0" name="TaxablePay" type="xs:double" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="GrossPaymentLine" nillable="true" type="tns:GrossPaymentLine" />
+  <xs:complexType name="ProcessPayrollAggregateResult">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="FailureMessage" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="Results" nillable="true" type="tns:ArrayOfProcessPayrollResult" />
+      <xs:element minOccurs="0" name="Success" type="xs:boolean" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="ProcessPayrollAggregateResult" nillable="true" type="tns:ProcessPayrollAggregateResult" />
+  <xs:complexType name="ArrayOfProcessPayrollResult">
+    <xs:sequence>
+      <xs:element minOccurs="0" maxOccurs="unbounded" name="ProcessPayrollResult" nillable="true" type="tns:ProcessPayrollResult" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="ArrayOfProcessPayrollResult" nillable="true" type="tns:ArrayOfProcessPayrollResult" />
+  <xs:complexType name="ProcessPayrollResult">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="EmployeePayrollId" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="FailureMessage" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="NetPaymentLine" nillable="true" type="tns:NetPaymentLine" />
+      <xs:element minOccurs="0" name="Success" type="xs:boolean" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="ProcessPayrollResult" nillable="true" type="tns:ProcessPayrollResult" />
+  <xs:complexType name="NetPaymentLine">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="EES" type="xs:double" />
+      <xs:element minOccurs="0" name="EESNITD" type="xs:double" />
+      <xs:element minOccurs="0" name="ERS" type="xs:double" />
+      <xs:element minOccurs="0" name="EmployeeCompanyId" nillable="true" type="tns:EmployeeCompanyId" />
+      <xs:element minOccurs="0" name="GrossTD" type="xs:double" />
+      <xs:element minOccurs="0" name="IncomeTax" type="xs:double" />
+      <xs:element minOccurs="0" name="Net" type="xs:double" />
+      <xs:element minOccurs="0" name="ProcessWeek" type="xs:int" />
+      <xs:element minOccurs="0" name="SLRPaymentCurrent" type="xs:double" />
+      <xs:element minOccurs="0" name="TaxBasis" type="xs:boolean" />
+      <xs:element minOccurs="0" name="TaxCode" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="TaxCredit" type="xs:double" />
+      <xs:element minOccurs="0" name="TaxTD" type="xs:double" />
+      <xs:element minOccurs="0" name="TaxableGrossTD" type="xs:double" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="NetPaymentLine" nillable="true" type="tns:NetPaymentLine" />
+  <xs:complexType name="ArrayOfCompany">
+    <xs:sequence>
+      <xs:element minOccurs="0" maxOccurs="unbounded" name="Company" nillable="true" type="tns:Company" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="ArrayOfCompany" nillable="true" type="tns:ArrayOfCompany" />
+</xs:schema>

@@ -1,0 +1,33 @@
+﻿@using ExpensePortal.Helpers
+@{
+    string token = AuthenticationHelper.GetCookieValue(AuthenticationHelper.LoginCookieName, "auth");
+    bool isAuthenticated = token != string.Empty;
+
+    string firstName = AuthenticationHelper.GetCookieValue(AuthenticationHelper.LoginCookieName, "firstname");
+
+    string adminVisible = AuthenticationHelper.GetCookieValue(AuthenticationHelper.LoginCookieName, "adminvisible");
+    bool bAdminVisible;
+    bool.TryParse(adminVisible, out bAdminVisible);
+}
+@if (isAuthenticated)
+{
+    @Html.AntiForgeryToken()
+
+    <div class="user">
+        <p>
+            Hi @firstName
+            @Html.ActionLink("Logout", "Logout", "Account", null, new { id = "logoutLink" })
+            | <a href="/content/docs/help.pdf" target="_blank">Help</a>            
+            | @Html.ActionLink("Employees", "Employees", "Expense").If(bAdminVisible)
+        </p>
+    </div>
+}
+else
+{
+    <div class="user">
+        <p>
+            @Html.ActionLink("Login", "Login", "Account", null, new { id = "loginLink" })
+        </p>
+    </div>
+}
+

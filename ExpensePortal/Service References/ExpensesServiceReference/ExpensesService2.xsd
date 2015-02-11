@@ -1,0 +1,172 @@
+<?xml version="1.0" encoding="utf-8"?>
+<xs:schema xmlns:tns="http://schemas.datacontract.org/2004/07/Interface" elementFormDefault="qualified" targetNamespace="http://schemas.datacontract.org/2004/07/Interface" xmlns:xs="http://www.w3.org/2001/XMLSchema">
+  <xs:complexType name="ArrayOfRoleData">
+    <xs:sequence>
+      <xs:element minOccurs="0" maxOccurs="unbounded" name="RoleData" nillable="true" type="tns:RoleData" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="ArrayOfRoleData" nillable="true" type="tns:ArrayOfRoleData" />
+  <xs:complexType name="RoleData">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="Description" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="RoleID" type="xs:int" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="RoleData" nillable="true" type="tns:RoleData" />
+  <xs:complexType name="ResetPasswordData">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="Email" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="FirstName" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="Surname" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="Token" nillable="true" type="xs:string" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="ResetPasswordData" nillable="true" type="tns:ResetPasswordData" />
+  <xs:complexType name="EmployeeData">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="Email" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="FirstName" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="LastName" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="UserName" nillable="true" type="xs:string" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="EmployeeData" nillable="true" type="tns:EmployeeData" />
+  <xs:complexType name="ProductPayrollData">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="PayrollNumber" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="ProductName" nillable="true" type="xs:string" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="ProductPayrollData" nillable="true" type="tns:ProductPayrollData" />
+  <xs:complexType name="EmployeeProductData">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="Employee" nillable="true" type="tns:EmployeeData" />
+      <xs:element minOccurs="0" name="ProductPayrolls" nillable="true" type="tns:ArrayOfProductPayrollData" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="EmployeeProductData" nillable="true" type="tns:EmployeeProductData" />
+  <xs:complexType name="ArrayOfProductPayrollData">
+    <xs:sequence>
+      <xs:element minOccurs="0" maxOccurs="unbounded" name="ProductPayrollData" nillable="true" type="tns:ProductPayrollData" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="ArrayOfProductPayrollData" nillable="true" type="tns:ArrayOfProductPayrollData" />
+  <xs:complexType name="ExpenditureData">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="DateFrom" type="xs:dateTime" />
+      <xs:element minOccurs="0" name="DateTo" type="xs:dateTime" />
+      <xs:element minOccurs="0" name="Days" nillable="true" type="tns:ArrayOfExpenditureDayData" />
+      <xs:element minOccurs="0" name="Edited" type="xs:boolean" />
+      <xs:element minOccurs="0" name="EditedBy" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="Week" type="xs:int" />
+      <xs:element minOccurs="0" name="Year" type="xs:int" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="ExpenditureData" nillable="true" type="tns:ExpenditureData" />
+  <xs:complexType name="ArrayOfExpenditureDayData">
+    <xs:sequence>
+      <xs:element minOccurs="0" maxOccurs="unbounded" name="ExpenditureDayData" nillable="true" type="tns:ExpenditureDayData" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="ArrayOfExpenditureDayData" nillable="true" type="tns:ArrayOfExpenditureDayData" />
+  <xs:complexType name="ExpenditureDayData">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="ArriveHomeMinutes" type="xs:int" />
+      <xs:element minOccurs="0" name="DepartHomeMinutes" type="xs:int" />
+      <xs:element minOccurs="0" name="Edited" type="xs:boolean" />
+      <xs:element minOccurs="0" name="EndPostcode" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="ExpenditureDate" type="xs:dateTime" />
+      <xs:element minOccurs="0" name="FoodDetail" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="HasReceipts" type="xs:boolean" />
+      <xs:element minOccurs="0" name="IsHomePostCode" type="xs:boolean" />
+      <xs:element minOccurs="0" name="Mileage" type="xs:double" />
+      <xs:element minOccurs="0" name="PurchasedFood" type="xs:boolean" />
+      <xs:element minOccurs="0" name="SitePostcode" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="StartPostcode" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="SubsistenceAmount" type="xs:decimal" />
+      <xs:element minOccurs="0" name="TravelAmount" type="xs:decimal" />
+      <xs:element minOccurs="0" name="TravelMode" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="UnableToGetReceipts" type="xs:boolean" />
+      <xs:element minOccurs="0" name="Worked" type="xs:boolean" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="ExpenditureDayData" nillable="true" type="tns:ExpenditureDayData" />
+  <xs:complexType name="ArrayOfEmployeeProductExpenditureData">
+    <xs:sequence>
+      <xs:element minOccurs="0" maxOccurs="unbounded" name="EmployeeProductExpenditureData" nillable="true" type="tns:EmployeeProductExpenditureData" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="ArrayOfEmployeeProductExpenditureData" nillable="true" type="tns:ArrayOfEmployeeProductExpenditureData" />
+  <xs:complexType name="EmployeeProductExpenditureData">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="Employee" nillable="true" type="tns:EmployeeData" />
+      <xs:element minOccurs="0" name="ProductExpenditures" nillable="true" type="tns:ArrayOfProductExpenditureData" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="EmployeeProductExpenditureData" nillable="true" type="tns:EmployeeProductExpenditureData" />
+  <xs:complexType name="ArrayOfProductExpenditureData">
+    <xs:sequence>
+      <xs:element minOccurs="0" maxOccurs="unbounded" name="ProductExpenditureData" nillable="true" type="tns:ProductExpenditureData" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="ArrayOfProductExpenditureData" nillable="true" type="tns:ArrayOfProductExpenditureData" />
+  <xs:complexType name="ProductExpenditureData">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="Expenditures" nillable="true" type="tns:ArrayOfExpenditureData" />
+      <xs:element minOccurs="0" name="ProductPayroll" nillable="true" type="tns:ProductPayrollData" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="ProductExpenditureData" nillable="true" type="tns:ProductExpenditureData" />
+  <xs:complexType name="ArrayOfExpenditureData">
+    <xs:sequence>
+      <xs:element minOccurs="0" maxOccurs="unbounded" name="ExpenditureData" nillable="true" type="tns:ExpenditureData" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="ArrayOfExpenditureData" nillable="true" type="tns:ArrayOfExpenditureData" />
+  <xs:complexType name="ArrayOfEmployeeProductData">
+    <xs:sequence>
+      <xs:element minOccurs="0" maxOccurs="unbounded" name="EmployeeProductData" nillable="true" type="tns:EmployeeProductData" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="ArrayOfEmployeeProductData" nillable="true" type="tns:ArrayOfEmployeeProductData" />
+  <xs:complexType name="ArrayOfEmployeeProductAndRoleData">
+    <xs:sequence>
+      <xs:element minOccurs="0" maxOccurs="unbounded" name="EmployeeProductAndRoleData" nillable="true" type="tns:EmployeeProductAndRoleData" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="ArrayOfEmployeeProductAndRoleData" nillable="true" type="tns:ArrayOfEmployeeProductAndRoleData" />
+  <xs:complexType name="EmployeeProductAndRoleData">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="Employee" nillable="true" type="tns:EmployeeData" />
+      <xs:element minOccurs="0" name="ProductPayrolls" nillable="true" type="tns:ArrayOfProductPayrollData" />
+      <xs:element minOccurs="0" name="Roles" nillable="true" type="tns:ArrayOfRoleData" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="EmployeeProductAndRoleData" nillable="true" type="tns:EmployeeProductAndRoleData" />
+  <xs:complexType name="ArrayOfProductData">
+    <xs:sequence>
+      <xs:element minOccurs="0" maxOccurs="unbounded" name="ProductData" nillable="true" type="tns:ProductData" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="ArrayOfProductData" nillable="true" type="tns:ArrayOfProductData" />
+  <xs:complexType name="ProductData">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="Name" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="ProductID" type="xs:int" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="ProductData" nillable="true" type="tns:ProductData" />
+  <xs:complexType name="ArrayOfTravelModeData">
+    <xs:sequence>
+      <xs:element minOccurs="0" maxOccurs="unbounded" name="TravelModeData" nillable="true" type="tns:TravelModeData" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="ArrayOfTravelModeData" nillable="true" type="tns:ArrayOfTravelModeData" />
+  <xs:complexType name="TravelModeData">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="Description" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="TravelModeID" type="xs:int" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="TravelModeData" nillable="true" type="tns:TravelModeData" />
+</xs:schema>

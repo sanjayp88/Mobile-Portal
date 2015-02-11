@@ -1,0 +1,466 @@
+<?xml version="1.0" encoding="utf-8"?>
+<wsdl:definitions xmlns:wsap="http://schemas.xmlsoap.org/ws/2004/08/addressing/policy" xmlns:wsa10="http://www.w3.org/2005/08/addressing" xmlns:tns="http://tempuri.org/" xmlns:msc="http://schemas.microsoft.com/ws/2005/12/wsdl/contract" xmlns:soapenc="http://schemas.xmlsoap.org/soap/encoding/" xmlns:wsx="http://schemas.xmlsoap.org/ws/2004/09/mex" xmlns:wsp="http://schemas.xmlsoap.org/ws/2004/09/policy" xmlns:wsam="http://www.w3.org/2007/05/addressing/metadata" xmlns:wsa="http://schemas.xmlsoap.org/ws/2004/08/addressing" xmlns:wsaw="http://www.w3.org/2006/05/addressing/wsdl" xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/" xmlns:soap12="http://schemas.xmlsoap.org/wsdl/soap12/" xmlns:wsu="http://docs.oasis-open.org/wss/2004/01/oasis-200401-wss-wssecurity-utility-1.0.xsd" xmlns:xsd="http://www.w3.org/2001/XMLSchema" name="ExpensesService" targetNamespace="http://tempuri.org/" xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">
+  <wsdl:types>
+    <xsd:schema targetNamespace="http://tempuri.org/Imports">
+      <xsd:import schemaLocation="http://localhost:808/ExpensesService.svc?xsd=xsd0" namespace="http://tempuri.org/" />
+      <xsd:import schemaLocation="http://localhost:808/ExpensesService.svc?xsd=xsd1" namespace="http://schemas.microsoft.com/2003/10/Serialization/" />
+      <xsd:import schemaLocation="http://localhost:808/ExpensesService.svc?xsd=xsd2" namespace="http://schemas.datacontract.org/2004/07/Interface" />
+      <xsd:import schemaLocation="http://localhost:808/ExpensesService.svc?xsd=xsd3" namespace="http://schemas.microsoft.com/2003/10/Serialization/Arrays" />
+    </xsd:schema>
+  </wsdl:types>
+  <wsdl:message name="IAuthorizationService_RegisterEmployee_InputMessage">
+    <wsdl:part name="parameters" element="tns:RegisterEmployee" />
+  </wsdl:message>
+  <wsdl:message name="IAuthorizationService_RegisterEmployee_OutputMessage">
+    <wsdl:part name="parameters" element="tns:RegisterEmployeeResponse" />
+  </wsdl:message>
+  <wsdl:message name="IAuthorizationService_ResetEmployeePassword_InputMessage">
+    <wsdl:part name="parameters" element="tns:ResetEmployeePassword" />
+  </wsdl:message>
+  <wsdl:message name="IAuthorizationService_ResetEmployeePassword_OutputMessage">
+    <wsdl:part name="parameters" element="tns:ResetEmployeePasswordResponse" />
+  </wsdl:message>
+  <wsdl:message name="IAuthorizationService_Login_InputMessage">
+    <wsdl:part name="parameters" element="tns:Login" />
+  </wsdl:message>
+  <wsdl:message name="IAuthorizationService_Login_OutputMessage">
+    <wsdl:part name="parameters" element="tns:LoginResponse" />
+  </wsdl:message>
+  <wsdl:message name="IAuthorizationService_Logout_InputMessage">
+    <wsdl:part name="parameters" element="tns:Logout" />
+  </wsdl:message>
+  <wsdl:message name="IAuthorizationService_Logout_OutputMessage">
+    <wsdl:part name="parameters" element="tns:LogoutResponse" />
+  </wsdl:message>
+  <wsdl:message name="IAuthorizationService_CanAuthenticateWithToken_InputMessage">
+    <wsdl:part name="parameters" element="tns:CanAuthenticateWithToken" />
+  </wsdl:message>
+  <wsdl:message name="IAuthorizationService_CanAuthenticateWithToken_OutputMessage">
+    <wsdl:part name="parameters" element="tns:CanAuthenticateWithTokenResponse" />
+  </wsdl:message>
+  <wsdl:message name="IAuthorizationService_AddRoleToEmployee_InputMessage">
+    <wsdl:part name="parameters" element="tns:AddRoleToEmployee" />
+  </wsdl:message>
+  <wsdl:message name="IAuthorizationService_AddRoleToEmployee_OutputMessage">
+    <wsdl:part name="parameters" element="tns:AddRoleToEmployeeResponse" />
+  </wsdl:message>
+  <wsdl:message name="IAuthorizationService_RemoveRoleFromEmployee_InputMessage">
+    <wsdl:part name="parameters" element="tns:RemoveRoleFromEmployee" />
+  </wsdl:message>
+  <wsdl:message name="IAuthorizationService_RemoveRoleFromEmployee_OutputMessage">
+    <wsdl:part name="parameters" element="tns:RemoveRoleFromEmployeeResponse" />
+  </wsdl:message>
+  <wsdl:message name="IAuthorizationService_IsExistingEmployeeRole_InputMessage">
+    <wsdl:part name="parameters" element="tns:IsExistingEmployeeRole" />
+  </wsdl:message>
+  <wsdl:message name="IAuthorizationService_IsExistingEmployeeRole_OutputMessage">
+    <wsdl:part name="parameters" element="tns:IsExistingEmployeeRoleResponse" />
+  </wsdl:message>
+  <wsdl:message name="IAuthorizationService_GetRoles_InputMessage">
+    <wsdl:part name="parameters" element="tns:GetRoles" />
+  </wsdl:message>
+  <wsdl:message name="IAuthorizationService_GetRoles_OutputMessage">
+    <wsdl:part name="parameters" element="tns:GetRolesResponse" />
+  </wsdl:message>
+  <wsdl:message name="IAuthorizationService_GetResetPasswordData_InputMessage">
+    <wsdl:part name="parameters" element="tns:GetResetPasswordData" />
+  </wsdl:message>
+  <wsdl:message name="IAuthorizationService_GetResetPasswordData_OutputMessage">
+    <wsdl:part name="parameters" element="tns:GetResetPasswordDataResponse" />
+  </wsdl:message>
+  <wsdl:message name="IBusinessService_GetWelcomePasswordToken_InputMessage">
+    <wsdl:part name="parameters" element="tns:GetWelcomePasswordToken" />
+  </wsdl:message>
+  <wsdl:message name="IBusinessService_GetWelcomePasswordToken_OutputMessage">
+    <wsdl:part name="parameters" element="tns:GetWelcomePasswordTokenResponse" />
+  </wsdl:message>
+  <wsdl:message name="IBusinessService_PersistEmployee_InputMessage">
+    <wsdl:part name="parameters" element="tns:PersistEmployee" />
+  </wsdl:message>
+  <wsdl:message name="IBusinessService_PersistEmployee_OutputMessage">
+    <wsdl:part name="parameters" element="tns:PersistEmployeeResponse" />
+  </wsdl:message>
+  <wsdl:message name="IBusinessService_AssignEmployeeToProduct_InputMessage">
+    <wsdl:part name="parameters" element="tns:AssignEmployeeToProduct" />
+  </wsdl:message>
+  <wsdl:message name="IBusinessService_AssignEmployeeToProduct_OutputMessage">
+    <wsdl:part name="parameters" element="tns:AssignEmployeeToProductResponse" />
+  </wsdl:message>
+  <wsdl:message name="IBusinessService_PersistExpenditure_InputMessage">
+    <wsdl:part name="parameters" element="tns:PersistExpenditure" />
+  </wsdl:message>
+  <wsdl:message name="IBusinessService_PersistExpenditure_OutputMessage">
+    <wsdl:part name="parameters" element="tns:PersistExpenditureResponse" />
+  </wsdl:message>
+  <wsdl:message name="IBusinessService_ConfirmExpenditure_InputMessage">
+    <wsdl:part name="parameters" element="tns:ConfirmExpenditure" />
+  </wsdl:message>
+  <wsdl:message name="IBusinessService_ConfirmExpenditure_OutputMessage">
+    <wsdl:part name="parameters" element="tns:ConfirmExpenditureResponse" />
+  </wsdl:message>
+  <wsdl:message name="IBusinessService_InvalidateExpenditure_InputMessage">
+    <wsdl:part name="parameters" element="tns:InvalidateExpenditure" />
+  </wsdl:message>
+  <wsdl:message name="IBusinessService_InvalidateExpenditure_OutputMessage">
+    <wsdl:part name="parameters" element="tns:InvalidateExpenditureResponse" />
+  </wsdl:message>
+  <wsdl:message name="IBusinessService_GetExpendituresByPayroll_InputMessage">
+    <wsdl:part name="parameters" element="tns:GetExpendituresByPayroll" />
+  </wsdl:message>
+  <wsdl:message name="IBusinessService_GetExpendituresByPayroll_OutputMessage">
+    <wsdl:part name="parameters" element="tns:GetExpendituresByPayrollResponse" />
+  </wsdl:message>
+  <wsdl:message name="IBusinessService_GetEmployeeProducts_InputMessage">
+    <wsdl:part name="parameters" element="tns:GetEmployeeProducts" />
+  </wsdl:message>
+  <wsdl:message name="IBusinessService_GetEmployeeProducts_OutputMessage">
+    <wsdl:part name="parameters" element="tns:GetEmployeeProductsResponse" />
+  </wsdl:message>
+  <wsdl:message name="IBusinessService_GetEmployeeProductsAndRoles_InputMessage">
+    <wsdl:part name="parameters" element="tns:GetEmployeeProductsAndRoles" />
+  </wsdl:message>
+  <wsdl:message name="IBusinessService_GetEmployeeProductsAndRoles_OutputMessage">
+    <wsdl:part name="parameters" element="tns:GetEmployeeProductsAndRolesResponse" />
+  </wsdl:message>
+  <wsdl:message name="IBusinessService_GetProducts_InputMessage">
+    <wsdl:part name="parameters" element="tns:GetProducts" />
+  </wsdl:message>
+  <wsdl:message name="IBusinessService_GetProducts_OutputMessage">
+    <wsdl:part name="parameters" element="tns:GetProductsResponse" />
+  </wsdl:message>
+  <wsdl:message name="IBusinessService_GetTravelModes_InputMessage">
+    <wsdl:part name="parameters" element="tns:GetTravelModes" />
+  </wsdl:message>
+  <wsdl:message name="IBusinessService_GetTravelModes_OutputMessage">
+    <wsdl:part name="parameters" element="tns:GetTravelModesResponse" />
+  </wsdl:message>
+  <wsdl:message name="IBusinessService_GetEmployeeByPayrollProduct_InputMessage">
+    <wsdl:part name="parameters" element="tns:GetEmployeeByPayrollProduct" />
+  </wsdl:message>
+  <wsdl:message name="IBusinessService_GetEmployeeByPayrollProduct_OutputMessage">
+    <wsdl:part name="parameters" element="tns:GetEmployeeByPayrollProductResponse" />
+  </wsdl:message>
+  <wsdl:message name="IBusinessService_EmailExists_InputMessage">
+    <wsdl:part name="parameters" element="tns:EmailExists" />
+  </wsdl:message>
+  <wsdl:message name="IBusinessService_EmailExists_OutputMessage">
+    <wsdl:part name="parameters" element="tns:EmailExistsResponse" />
+  </wsdl:message>
+  <wsdl:portType name="IAuthorizationService">
+    <wsdl:operation name="RegisterEmployee">
+      <wsdl:input wsaw:Action="http://tempuri.org/IAuthorizationService/RegisterEmployee" message="tns:IAuthorizationService_RegisterEmployee_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IAuthorizationService/RegisterEmployeeResponse" message="tns:IAuthorizationService_RegisterEmployee_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="ResetEmployeePassword">
+      <wsdl:input wsaw:Action="http://tempuri.org/IAuthorizationService/ResetEmployeePassword" message="tns:IAuthorizationService_ResetEmployeePassword_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IAuthorizationService/ResetEmployeePasswordResponse" message="tns:IAuthorizationService_ResetEmployeePassword_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="Login">
+      <wsdl:input wsaw:Action="http://tempuri.org/IAuthorizationService/Login" message="tns:IAuthorizationService_Login_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IAuthorizationService/LoginResponse" message="tns:IAuthorizationService_Login_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="Logout">
+      <wsdl:input wsaw:Action="http://tempuri.org/IAuthorizationService/Logout" message="tns:IAuthorizationService_Logout_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IAuthorizationService/LogoutResponse" message="tns:IAuthorizationService_Logout_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="CanAuthenticateWithToken">
+      <wsdl:input wsaw:Action="http://tempuri.org/IAuthorizationService/CanAuthenticateWithToken" message="tns:IAuthorizationService_CanAuthenticateWithToken_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IAuthorizationService/CanAuthenticateWithTokenResponse" message="tns:IAuthorizationService_CanAuthenticateWithToken_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="AddRoleToEmployee">
+      <wsdl:input wsaw:Action="http://tempuri.org/IAuthorizationService/AddRoleToEmployee" message="tns:IAuthorizationService_AddRoleToEmployee_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IAuthorizationService/AddRoleToEmployeeResponse" message="tns:IAuthorizationService_AddRoleToEmployee_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="RemoveRoleFromEmployee">
+      <wsdl:input wsaw:Action="http://tempuri.org/IAuthorizationService/RemoveRoleFromEmployee" message="tns:IAuthorizationService_RemoveRoleFromEmployee_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IAuthorizationService/RemoveRoleFromEmployeeResponse" message="tns:IAuthorizationService_RemoveRoleFromEmployee_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="IsExistingEmployeeRole">
+      <wsdl:input wsaw:Action="http://tempuri.org/IAuthorizationService/IsExistingEmployeeRole" message="tns:IAuthorizationService_IsExistingEmployeeRole_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IAuthorizationService/IsExistingEmployeeRoleResponse" message="tns:IAuthorizationService_IsExistingEmployeeRole_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="GetRoles">
+      <wsdl:input wsaw:Action="http://tempuri.org/IAuthorizationService/GetRoles" message="tns:IAuthorizationService_GetRoles_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IAuthorizationService/GetRolesResponse" message="tns:IAuthorizationService_GetRoles_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="GetResetPasswordData">
+      <wsdl:input wsaw:Action="http://tempuri.org/IAuthorizationService/GetResetPasswordData" message="tns:IAuthorizationService_GetResetPasswordData_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IAuthorizationService/GetResetPasswordDataResponse" message="tns:IAuthorizationService_GetResetPasswordData_OutputMessage" />
+    </wsdl:operation>
+  </wsdl:portType>
+  <wsdl:portType name="IBusinessService">
+    <wsdl:operation name="GetWelcomePasswordToken">
+      <wsdl:input wsaw:Action="http://tempuri.org/IBusinessService/GetWelcomePasswordToken" message="tns:IBusinessService_GetWelcomePasswordToken_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IBusinessService/GetWelcomePasswordTokenResponse" message="tns:IBusinessService_GetWelcomePasswordToken_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="PersistEmployee">
+      <wsdl:input wsaw:Action="http://tempuri.org/IBusinessService/PersistEmployee" message="tns:IBusinessService_PersistEmployee_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IBusinessService/PersistEmployeeResponse" message="tns:IBusinessService_PersistEmployee_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="AssignEmployeeToProduct">
+      <wsdl:input wsaw:Action="http://tempuri.org/IBusinessService/AssignEmployeeToProduct" message="tns:IBusinessService_AssignEmployeeToProduct_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IBusinessService/AssignEmployeeToProductResponse" message="tns:IBusinessService_AssignEmployeeToProduct_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="PersistExpenditure">
+      <wsdl:input wsaw:Action="http://tempuri.org/IBusinessService/PersistExpenditure" message="tns:IBusinessService_PersistExpenditure_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IBusinessService/PersistExpenditureResponse" message="tns:IBusinessService_PersistExpenditure_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="ConfirmExpenditure">
+      <wsdl:input wsaw:Action="http://tempuri.org/IBusinessService/ConfirmExpenditure" message="tns:IBusinessService_ConfirmExpenditure_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IBusinessService/ConfirmExpenditureResponse" message="tns:IBusinessService_ConfirmExpenditure_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="InvalidateExpenditure">
+      <wsdl:input wsaw:Action="http://tempuri.org/IBusinessService/InvalidateExpenditure" message="tns:IBusinessService_InvalidateExpenditure_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IBusinessService/InvalidateExpenditureResponse" message="tns:IBusinessService_InvalidateExpenditure_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="GetExpendituresByPayroll">
+      <wsdl:input wsaw:Action="http://tempuri.org/IBusinessService/GetExpendituresByPayroll" message="tns:IBusinessService_GetExpendituresByPayroll_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IBusinessService/GetExpendituresByPayrollResponse" message="tns:IBusinessService_GetExpendituresByPayroll_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="GetEmployeeProducts">
+      <wsdl:input wsaw:Action="http://tempuri.org/IBusinessService/GetEmployeeProducts" message="tns:IBusinessService_GetEmployeeProducts_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IBusinessService/GetEmployeeProductsResponse" message="tns:IBusinessService_GetEmployeeProducts_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="GetEmployeeProductsAndRoles">
+      <wsdl:input wsaw:Action="http://tempuri.org/IBusinessService/GetEmployeeProductsAndRoles" message="tns:IBusinessService_GetEmployeeProductsAndRoles_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IBusinessService/GetEmployeeProductsAndRolesResponse" message="tns:IBusinessService_GetEmployeeProductsAndRoles_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="GetProducts">
+      <wsdl:input wsaw:Action="http://tempuri.org/IBusinessService/GetProducts" message="tns:IBusinessService_GetProducts_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IBusinessService/GetProductsResponse" message="tns:IBusinessService_GetProducts_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="GetTravelModes">
+      <wsdl:input wsaw:Action="http://tempuri.org/IBusinessService/GetTravelModes" message="tns:IBusinessService_GetTravelModes_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IBusinessService/GetTravelModesResponse" message="tns:IBusinessService_GetTravelModes_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="GetEmployeeByPayrollProduct">
+      <wsdl:input wsaw:Action="http://tempuri.org/IBusinessService/GetEmployeeByPayrollProduct" message="tns:IBusinessService_GetEmployeeByPayrollProduct_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IBusinessService/GetEmployeeByPayrollProductResponse" message="tns:IBusinessService_GetEmployeeByPayrollProduct_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="EmailExists">
+      <wsdl:input wsaw:Action="http://tempuri.org/IBusinessService/EmailExists" message="tns:IBusinessService_EmailExists_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IBusinessService/EmailExistsResponse" message="tns:IBusinessService_EmailExists_OutputMessage" />
+    </wsdl:operation>
+  </wsdl:portType>
+  <wsdl:binding name="BasicHttpBinding_IAuthorizationService" type="tns:IAuthorizationService">
+    <soap:binding transport="http://schemas.xmlsoap.org/soap/http" />
+    <wsdl:operation name="RegisterEmployee">
+      <soap:operation soapAction="http://tempuri.org/IAuthorizationService/RegisterEmployee" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="ResetEmployeePassword">
+      <soap:operation soapAction="http://tempuri.org/IAuthorizationService/ResetEmployeePassword" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="Login">
+      <soap:operation soapAction="http://tempuri.org/IAuthorizationService/Login" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="Logout">
+      <soap:operation soapAction="http://tempuri.org/IAuthorizationService/Logout" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="CanAuthenticateWithToken">
+      <soap:operation soapAction="http://tempuri.org/IAuthorizationService/CanAuthenticateWithToken" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="AddRoleToEmployee">
+      <soap:operation soapAction="http://tempuri.org/IAuthorizationService/AddRoleToEmployee" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="RemoveRoleFromEmployee">
+      <soap:operation soapAction="http://tempuri.org/IAuthorizationService/RemoveRoleFromEmployee" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="IsExistingEmployeeRole">
+      <soap:operation soapAction="http://tempuri.org/IAuthorizationService/IsExistingEmployeeRole" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetRoles">
+      <soap:operation soapAction="http://tempuri.org/IAuthorizationService/GetRoles" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetResetPasswordData">
+      <soap:operation soapAction="http://tempuri.org/IAuthorizationService/GetResetPasswordData" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+  </wsdl:binding>
+  <wsdl:binding name="BasicHttpBinding_IBusinessService" type="tns:IBusinessService">
+    <soap:binding transport="http://schemas.xmlsoap.org/soap/http" />
+    <wsdl:operation name="GetWelcomePasswordToken">
+      <soap:operation soapAction="http://tempuri.org/IBusinessService/GetWelcomePasswordToken" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="PersistEmployee">
+      <soap:operation soapAction="http://tempuri.org/IBusinessService/PersistEmployee" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="AssignEmployeeToProduct">
+      <soap:operation soapAction="http://tempuri.org/IBusinessService/AssignEmployeeToProduct" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="PersistExpenditure">
+      <soap:operation soapAction="http://tempuri.org/IBusinessService/PersistExpenditure" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="ConfirmExpenditure">
+      <soap:operation soapAction="http://tempuri.org/IBusinessService/ConfirmExpenditure" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="InvalidateExpenditure">
+      <soap:operation soapAction="http://tempuri.org/IBusinessService/InvalidateExpenditure" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetExpendituresByPayroll">
+      <soap:operation soapAction="http://tempuri.org/IBusinessService/GetExpendituresByPayroll" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetEmployeeProducts">
+      <soap:operation soapAction="http://tempuri.org/IBusinessService/GetEmployeeProducts" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetEmployeeProductsAndRoles">
+      <soap:operation soapAction="http://tempuri.org/IBusinessService/GetEmployeeProductsAndRoles" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetProducts">
+      <soap:operation soapAction="http://tempuri.org/IBusinessService/GetProducts" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetTravelModes">
+      <soap:operation soapAction="http://tempuri.org/IBusinessService/GetTravelModes" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetEmployeeByPayrollProduct">
+      <soap:operation soapAction="http://tempuri.org/IBusinessService/GetEmployeeByPayrollProduct" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="EmailExists">
+      <soap:operation soapAction="http://tempuri.org/IBusinessService/EmailExists" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+  </wsdl:binding>
+  <wsdl:service name="ExpensesService">
+    <wsdl:port name="BasicHttpBinding_IAuthorizationService" binding="tns:BasicHttpBinding_IAuthorizationService">
+      <soap:address location="http://localhost:808/ExpensesService.svc" />
+    </wsdl:port>
+    <wsdl:port name="BasicHttpBinding_IBusinessService" binding="tns:BasicHttpBinding_IBusinessService">
+      <soap:address location="http://localhost:808/ExpensesService.svc" />
+    </wsdl:port>
+  </wsdl:service>
+</wsdl:definitions>
